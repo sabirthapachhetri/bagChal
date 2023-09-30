@@ -1,0 +1,588 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		EB4C75CD2AC7B72B00AA575B /* bagChalApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB4C75CC2AC7B72B00AA575B /* bagChalApp.swift */; };
+		EB4C75CF2AC7B72B00AA575B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB4C75CE2AC7B72B00AA575B /* ContentView.swift */; };
+		EB4C75D12AC7B72F00AA575B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EB4C75D02AC7B72F00AA575B /* Assets.xcassets */; };
+		EB4C75D42AC7B72F00AA575B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EB4C75D32AC7B72F00AA575B /* Preview Assets.xcassets */; };
+		EB4C75DE2AC7B72F00AA575B /* bagChalTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB4C75DD2AC7B72F00AA575B /* bagChalTests.swift */; };
+		EB4C75E82AC7B72F00AA575B /* bagChalUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB4C75E72AC7B72F00AA575B /* bagChalUITests.swift */; };
+		EB4C75EA2AC7B72F00AA575B /* bagChalUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB4C75E92AC7B72F00AA575B /* bagChalUITestsLaunchTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		EB4C75DA2AC7B72F00AA575B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EB4C75C12AC7B72B00AA575B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = EB4C75C82AC7B72B00AA575B;
+			remoteInfo = bagChal;
+		};
+		EB4C75E42AC7B72F00AA575B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EB4C75C12AC7B72B00AA575B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = EB4C75C82AC7B72B00AA575B;
+			remoteInfo = bagChal;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		EB4C75C92AC7B72B00AA575B /* bagChal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = bagChal.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		EB4C75CC2AC7B72B00AA575B /* bagChalApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = bagChalApp.swift; sourceTree = "<group>"; };
+		EB4C75CE2AC7B72B00AA575B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		EB4C75D02AC7B72F00AA575B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		EB4C75D32AC7B72F00AA575B /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		EB4C75D92AC7B72F00AA575B /* bagChalTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = bagChalTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		EB4C75DD2AC7B72F00AA575B /* bagChalTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = bagChalTests.swift; sourceTree = "<group>"; };
+		EB4C75E32AC7B72F00AA575B /* bagChalUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = bagChalUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		EB4C75E72AC7B72F00AA575B /* bagChalUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = bagChalUITests.swift; sourceTree = "<group>"; };
+		EB4C75E92AC7B72F00AA575B /* bagChalUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = bagChalUITestsLaunchTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		EB4C75C62AC7B72B00AA575B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EB4C75D62AC7B72F00AA575B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EB4C75E02AC7B72F00AA575B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		EB4C75C02AC7B72B00AA575B = {
+			isa = PBXGroup;
+			children = (
+				EB4C75CB2AC7B72B00AA575B /* bagChal */,
+				EB4C75DC2AC7B72F00AA575B /* bagChalTests */,
+				EB4C75E62AC7B72F00AA575B /* bagChalUITests */,
+				EB4C75CA2AC7B72B00AA575B /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		EB4C75CA2AC7B72B00AA575B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				EB4C75C92AC7B72B00AA575B /* bagChal.app */,
+				EB4C75D92AC7B72F00AA575B /* bagChalTests.xctest */,
+				EB4C75E32AC7B72F00AA575B /* bagChalUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		EB4C75CB2AC7B72B00AA575B /* bagChal */ = {
+			isa = PBXGroup;
+			children = (
+				EB4C75CC2AC7B72B00AA575B /* bagChalApp.swift */,
+				EB4C75CE2AC7B72B00AA575B /* ContentView.swift */,
+				EB4C75D02AC7B72F00AA575B /* Assets.xcassets */,
+				EB4C75D22AC7B72F00AA575B /* Preview Content */,
+			);
+			path = bagChal;
+			sourceTree = "<group>";
+		};
+		EB4C75D22AC7B72F00AA575B /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				EB4C75D32AC7B72F00AA575B /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		EB4C75DC2AC7B72F00AA575B /* bagChalTests */ = {
+			isa = PBXGroup;
+			children = (
+				EB4C75DD2AC7B72F00AA575B /* bagChalTests.swift */,
+			);
+			path = bagChalTests;
+			sourceTree = "<group>";
+		};
+		EB4C75E62AC7B72F00AA575B /* bagChalUITests */ = {
+			isa = PBXGroup;
+			children = (
+				EB4C75E72AC7B72F00AA575B /* bagChalUITests.swift */,
+				EB4C75E92AC7B72F00AA575B /* bagChalUITestsLaunchTests.swift */,
+			);
+			path = bagChalUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		EB4C75C82AC7B72B00AA575B /* bagChal */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EB4C75ED2AC7B72F00AA575B /* Build configuration list for PBXNativeTarget "bagChal" */;
+			buildPhases = (
+				EB4C75C52AC7B72B00AA575B /* Sources */,
+				EB4C75C62AC7B72B00AA575B /* Frameworks */,
+				EB4C75C72AC7B72B00AA575B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = bagChal;
+			productName = bagChal;
+			productReference = EB4C75C92AC7B72B00AA575B /* bagChal.app */;
+			productType = "com.apple.product-type.application";
+		};
+		EB4C75D82AC7B72F00AA575B /* bagChalTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EB4C75F02AC7B72F00AA575B /* Build configuration list for PBXNativeTarget "bagChalTests" */;
+			buildPhases = (
+				EB4C75D52AC7B72F00AA575B /* Sources */,
+				EB4C75D62AC7B72F00AA575B /* Frameworks */,
+				EB4C75D72AC7B72F00AA575B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				EB4C75DB2AC7B72F00AA575B /* PBXTargetDependency */,
+			);
+			name = bagChalTests;
+			productName = bagChalTests;
+			productReference = EB4C75D92AC7B72F00AA575B /* bagChalTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		EB4C75E22AC7B72F00AA575B /* bagChalUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EB4C75F32AC7B72F00AA575B /* Build configuration list for PBXNativeTarget "bagChalUITests" */;
+			buildPhases = (
+				EB4C75DF2AC7B72F00AA575B /* Sources */,
+				EB4C75E02AC7B72F00AA575B /* Frameworks */,
+				EB4C75E12AC7B72F00AA575B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				EB4C75E52AC7B72F00AA575B /* PBXTargetDependency */,
+			);
+			name = bagChalUITests;
+			productName = bagChalUITests;
+			productReference = EB4C75E32AC7B72F00AA575B /* bagChalUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		EB4C75C12AC7B72B00AA575B /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1420;
+				LastUpgradeCheck = 1420;
+				TargetAttributes = {
+					EB4C75C82AC7B72B00AA575B = {
+						CreatedOnToolsVersion = 14.2;
+					};
+					EB4C75D82AC7B72F00AA575B = {
+						CreatedOnToolsVersion = 14.2;
+						TestTargetID = EB4C75C82AC7B72B00AA575B;
+					};
+					EB4C75E22AC7B72F00AA575B = {
+						CreatedOnToolsVersion = 14.2;
+						TestTargetID = EB4C75C82AC7B72B00AA575B;
+					};
+				};
+			};
+			buildConfigurationList = EB4C75C42AC7B72B00AA575B /* Build configuration list for PBXProject "bagChal" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = EB4C75C02AC7B72B00AA575B;
+			productRefGroup = EB4C75CA2AC7B72B00AA575B /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				EB4C75C82AC7B72B00AA575B /* bagChal */,
+				EB4C75D82AC7B72F00AA575B /* bagChalTests */,
+				EB4C75E22AC7B72F00AA575B /* bagChalUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		EB4C75C72AC7B72B00AA575B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EB4C75D42AC7B72F00AA575B /* Preview Assets.xcassets in Resources */,
+				EB4C75D12AC7B72F00AA575B /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EB4C75D72AC7B72F00AA575B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EB4C75E12AC7B72F00AA575B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		EB4C75C52AC7B72B00AA575B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EB4C75CF2AC7B72B00AA575B /* ContentView.swift in Sources */,
+				EB4C75CD2AC7B72B00AA575B /* bagChalApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EB4C75D52AC7B72F00AA575B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EB4C75DE2AC7B72F00AA575B /* bagChalTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EB4C75DF2AC7B72F00AA575B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EB4C75E82AC7B72F00AA575B /* bagChalUITests.swift in Sources */,
+				EB4C75EA2AC7B72F00AA575B /* bagChalUITestsLaunchTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		EB4C75DB2AC7B72F00AA575B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = EB4C75C82AC7B72B00AA575B /* bagChal */;
+			targetProxy = EB4C75DA2AC7B72F00AA575B /* PBXContainerItemProxy */;
+		};
+		EB4C75E52AC7B72F00AA575B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = EB4C75C82AC7B72B00AA575B /* bagChal */;
+			targetProxy = EB4C75E42AC7B72F00AA575B /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		EB4C75EB2AC7B72F00AA575B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		EB4C75EC2AC7B72F00AA575B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		EB4C75EE2AC7B72F00AA575B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"bagChal/Preview Content\"";
+				DEVELOPMENT_TEAM = 6Y6RPJ8AU9;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = bagChal.bagChal;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		EB4C75EF2AC7B72F00AA575B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"bagChal/Preview Content\"";
+				DEVELOPMENT_TEAM = 6Y6RPJ8AU9;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = bagChal.bagChal;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		EB4C75F12AC7B72F00AA575B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 6Y6RPJ8AU9;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = bagChal.bagChalTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/bagChal.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/bagChal";
+			};
+			name = Debug;
+		};
+		EB4C75F22AC7B72F00AA575B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 6Y6RPJ8AU9;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = bagChal.bagChalTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/bagChal.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/bagChal";
+			};
+			name = Release;
+		};
+		EB4C75F42AC7B72F00AA575B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 6Y6RPJ8AU9;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = bagChal.bagChalUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = bagChal;
+			};
+			name = Debug;
+		};
+		EB4C75F52AC7B72F00AA575B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 6Y6RPJ8AU9;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = bagChal.bagChalUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = bagChal;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		EB4C75C42AC7B72B00AA575B /* Build configuration list for PBXProject "bagChal" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EB4C75EB2AC7B72F00AA575B /* Debug */,
+				EB4C75EC2AC7B72F00AA575B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EB4C75ED2AC7B72F00AA575B /* Build configuration list for PBXNativeTarget "bagChal" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EB4C75EE2AC7B72F00AA575B /* Debug */,
+				EB4C75EF2AC7B72F00AA575B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EB4C75F02AC7B72F00AA575B /* Build configuration list for PBXNativeTarget "bagChalTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EB4C75F12AC7B72F00AA575B /* Debug */,
+				EB4C75F22AC7B72F00AA575B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EB4C75F32AC7B72F00AA575B /* Build configuration list for PBXNativeTarget "bagChalUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EB4C75F42AC7B72F00AA575B /* Debug */,
+				EB4C75F52AC7B72F00AA575B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = EB4C75C12AC7B72B00AA575B /* Project object */;
+}
