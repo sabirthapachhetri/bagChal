@@ -1,0 +1,6 @@
+framework module Pods_bagChal {
+  umbrella header "Pods-bagChal-umbrella.h"
+
+  export *
+  module * { export * }
+}
