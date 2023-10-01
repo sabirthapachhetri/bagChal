@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		132ABC55174FAC3FDE0A2657 /* Pods_bagChal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E23F2DC2DD693A1EB3F8F91 /* Pods_bagChal.framework */; };
 		830FC6C0E6C851E51044DFC6 /* Pods_bagChal_bagChalUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A6ECA10C03C979A87CEB21D /* Pods_bagChal_bagChalUITests.framework */; };
+		EB0F68AB2AC99A4200FE4D24 /* LoginRegisterSegmentVIew.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB0F68AA2AC99A4200FE4D24 /* LoginRegisterSegmentVIew.swift */; };
+		EB0F68AF2AC9ABDF00FE4D24 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB0F68AE2AC9ABDF00FE4D24 /* LoginView.swift */; };
 		EB4C75CD2AC7B72B00AA575B /* bagChalApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB4C75CC2AC7B72B00AA575B /* bagChalApp.swift */; };
 		EB4C75CF2AC7B72B00AA575B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB4C75CE2AC7B72B00AA575B /* ContentView.swift */; };
 		EB4C75D12AC7B72F00AA575B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EB4C75D02AC7B72F00AA575B /* Assets.xcassets */; };
@@ -44,6 +46,8 @@
 		6A6ECA10C03C979A87CEB21D /* Pods_bagChal_bagChalUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_bagChal_bagChalUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		946B10D638259E72AE358CA5 /* Pods-bagChal-bagChalUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bagChal-bagChalUITests.debug.xcconfig"; path = "Target Support Files/Pods-bagChal-bagChalUITests/Pods-bagChal-bagChalUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		BB0E2DCE19BD61C83E044C06 /* Pods_bagChalTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_bagChalTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EB0F68AA2AC99A4200FE4D24 /* LoginRegisterSegmentVIew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRegisterSegmentVIew.swift; sourceTree = "<group>"; };
+		EB0F68AE2AC9ABDF00FE4D24 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		EB4C75C92AC7B72B00AA575B /* bagChal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = bagChal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB4C75CC2AC7B72B00AA575B /* bagChalApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = bagChalApp.swift; sourceTree = "<group>"; };
 		EB4C75CE2AC7B72B00AA575B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -96,7 +100,6 @@
 				50661D44043C69D4EBBE1BB2 /* Pods-bagChalTests.debug.xcconfig */,
 				0DC7DD47837AFC27CA63C952 /* Pods-bagChalTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -108,6 +111,15 @@
 				BB0E2DCE19BD61C83E044C06 /* Pods_bagChalTests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		EB0F68A92AC99A1100FE4D24 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				EB0F68AA2AC99A4200FE4D24 /* LoginRegisterSegmentVIew.swift */,
+				EB0F68AE2AC9ABDF00FE4D24 /* LoginView.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		EB4C75C02AC7B72B00AA575B = {
@@ -137,6 +149,7 @@
 			children = (
 				EB4C75CC2AC7B72B00AA575B /* bagChalApp.swift */,
 				EB4C75CE2AC7B72B00AA575B /* ContentView.swift */,
+				EB0F68A92AC99A1100FE4D24 /* View */,
 				EB4C75D02AC7B72F00AA575B /* Assets.xcassets */,
 				EB4C75D22AC7B72F00AA575B /* Preview Content */,
 			);
@@ -371,6 +384,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				EB4C75CF2AC7B72B00AA575B /* ContentView.swift in Sources */,
+				EB0F68AB2AC99A4200FE4D24 /* LoginRegisterSegmentVIew.swift in Sources */,
+				EB0F68AF2AC9ABDF00FE4D24 /* LoginView.swift in Sources */,
 				EB4C75CD2AC7B72B00AA575B /* bagChalApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
