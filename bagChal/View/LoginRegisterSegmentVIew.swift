@@ -51,7 +51,12 @@ struct LoginRegisterSegmentVIew: View {
                         .background(Color.white)
                         .cornerRadius(24)
                 }
-                // You can add more views here for "Register" and other segments
+                
+                if loginRegisterSelected == "Register" {
+                    RegisterView()
+                        .background(Color.white)
+                        .cornerRadius(24)
+                }
                 
                 Spacer()
             }

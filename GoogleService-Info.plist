@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>API_KEY</key>
+	<string>AIzaSyCGhAiVmHEqK44L4YETIgRf-XgTzKyb4NQ</string>
+	<key>GCM_SENDER_ID</key>
+	<string>43802187136</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>bagChal.bagChal</string>
+	<key>PROJECT_ID</key>
+	<string>bagchal-cc46e</string>
+	<key>STORAGE_BUCKET</key>
+	<string>bagchal-cc46e.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:43802187136:ios:6e5d60ad116d34d9e2dd65</string>
+</dict>
+</plist>

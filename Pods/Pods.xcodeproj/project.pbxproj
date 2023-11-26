@@ -48,13 +48,14 @@
 		8AA8F5C7F106B7B03E4A167DB4BBD220 /* Pods-bagChalTests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-bagChalTests-Info.plist"; sourceTree = "<group>"; };
 		9088A13BDC88D84D990FDAE4B877EF01 /* Pods-bagChal-bagChalUITests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-bagChal-bagChalUITests-umbrella.h"; sourceTree = "<group>"; };
 		9749FEFB259C17673EB19BCCE6F870AD /* Pods-bagChal-bagChalUITests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-bagChal-bagChalUITests-Info.plist"; sourceTree = "<group>"; };
-		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		9EF89B48EC4FF9A4A9955C2115CFA6D7 /* Pods-bagChal-bagChalUITests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-bagChal-bagChalUITests-acknowledgements.plist"; sourceTree = "<group>"; };
 		C26DB57867D5623B2D04AB86BEAB7F72 /* Pods-bagChal-bagChalUITests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-bagChal-bagChalUITests-dummy.m"; sourceTree = "<group>"; };
 		C3410D97C9DF9AFB7545671833331775 /* Pods-bagChal-bagChalUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-bagChal-bagChalUITests.release.xcconfig"; sourceTree = "<group>"; };
 		C447B8B0B5698061A87738C9801E0B4F /* Pods-bagChalTests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-bagChalTests-umbrella.h"; sourceTree = "<group>"; };
 		DF0813050F887535FDEA351ED16E7B76 /* Pods-bagChal */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-bagChal"; path = Pods_bagChal.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA87F087C6D1B3BC87448FD0D0FB4E09 /* Pods-bagChal-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-bagChal-Info.plist"; sourceTree = "<group>"; };
+		EB0F68B62ACAE9D900FE4D24 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../GoogleService-Info.plist"; sourceTree = "<group>"; };
 		EF8A70DA0181730B36F3377D5AF24EB3 /* Pods-bagChal-bagChalUITests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-bagChal-bagChalUITests-acknowledgements.markdown"; sourceTree = "<group>"; };
 		F502008AA2088045B40C268BE1D064F5 /* Pods-bagChal-bagChalUITests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-bagChal-bagChalUITests.modulemap"; sourceTree = "<group>"; };
 		F9BEC171F7CF2F54E6EA61856D4C9E00 /* Pods-bagChalTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-bagChalTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -151,6 +152,7 @@
 		CF1408CF629C7361332E53B88F7BD30C = {
 			isa = PBXGroup;
 			children = (
+				EB0F68B62ACAE9D900FE4D24 /* GoogleService-Info.plist */,
 				9D940727FF8FB9C785EB98E56350EF41 /* Podfile */,
 				D210D550F4EA176C3123ED886F8F87F5 /* Frameworks */,
 				423FBD558E552487AF23BB662E947E3B /* Products */,
