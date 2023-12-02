@@ -8,13 +8,19 @@
 import SwiftUI
 
 struct IntersectionCircles: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-    }
-}
+    let rows: Int
+    let columns: Int
+    let spacing: CGFloat
+    let diameter: CGFloat
 
-struct IntersectionCircles_Previews: PreviewProvider {
-    static var previews: some View {
-        IntersectionCircles()
+    var body: some View {
+        ForEach(0..<rows) { row in
+            ForEach(0..<columns) { column in
+                Circle()
+                    .fill(Color.white)
+                    .frame(width: diameter, height: diameter)
+                    .position(x: CGFloat(column) * spacing, y: CGFloat(row) * spacing)
+            }
+        }
     }
 }
