@@ -7,72 +7,81 @@
 
 import SwiftUI
 
+import SwiftUI
+
 struct TigerPiece: View {
-    @Binding var tigerPositions: [CGPoint]
     let rows: Int
     let columns: Int
     let spacing: CGFloat
     let diameter: CGFloat
-
-    // Function to check if a position is adjacent to a tiger's position
-    private func isAdjacentPosition(for tigerIndex: Int, position: CGPoint) -> Bool {
-        let currentPos = tigerPositions[tigerIndex]
-        let dx = abs(position.x - currentPos.x)
-        let dy = abs(position.y - currentPos.y)
-
-        // Check for one spacing away horizontally or vertically
-        let isAdjacentHorizontally = dx == spacing && dy == 0
-        let isAdjacentVertically = dy == spacing && dx == 0
-        // Check for diagonal movement
-        let isAdjacentDiagonally = dx == spacing && dy == spacing
-
-        return isAdjacentHorizontally || isAdjacentVertically || isAdjacentDiagonally
-    }
+    var connectedPointsDict: [Point: Set<Point>]
     
-    // Function to calculate the nearest intersection point
-    private func nearestIntersection(to point: CGPoint) -> CGPoint {
-        let x = round(point.x / spacing) * spacing
-        let y = round(point.y / spacing) * spacing
-        // Make sure the values are clamped within the game board bounds
-        return CGPoint(x: max(min(x, spacing * CGFloat(columns - 1)), 0),
-                       y: max(min(y, spacing * CGFloat(rows - 1)), 0))
+    @Binding var goatPositions: [CGPoint]
+    @Binding var tigerPositions: [CGPoint]
+    @Binding var game: BaghChalGame
+
+
+    private func convertToGridPoint(_ point: CGPoint) -> Point {
+        let x = Int(round(point.x / spacing)) + 1  // Adjust for 1-indexing
+        let y = Int(round(point.y / spacing)) + 1  // Adjust for 1-indexing
+        return Point(x: x, y: y)
+    }
+
+    private func convertToCGPoint(_ point: Point) -> CGPoint {
+        let x = CGFloat(point.x - 1) * spacing  // Adjust for 1-indexing
+        let y = CGFloat(point.y - 1) * spacing  // Adjust for 1-indexing
+        return CGPoint(x: x, y: y)
+    }
+
+    // Check if the new position is adjacent and valid according to the game rules
+    private func isValidTigerMove(from currentPos: CGPoint, to newPos: CGPoint) -> Bool {
+        let currentGridPoint = convertToGridPoint(currentPos)
+        let newGridPoint = convertToGridPoint(newPos)
+            
+        guard let connectedPoints = connectedPointsDict[currentGridPoint] else { return false }
+        
+        let isAdjacent = connectedPoints.contains(newGridPoint)
+        let isFree = !goatPositions.contains(newPos) && !tigerPositions.contains(newPos)
+                
+        return isAdjacent && isFree
     }
 
     var body: some View {
-        // Draw the tiger images with draggable functionality
         ForEach(0..<tigerPositions.count, id: \.self) { index in
-            Image("tiger") // Ensure you have an image named "tiger" in your assets
+            Image("tiger")
                 .resizable()
                 .frame(width: diameter, height: diameter)
                 .position(tigerPositions[index])
+                
                 .gesture(
                     DragGesture()
+                        .onChanged { gesture in
+                            print("Dragging to: \(gesture.location)")
+                        }
                         .onEnded { gesture in
-                            // Calculate the dragged position
-                            let draggedPosition = CGPoint(
-                                x: tigerPositions[index].x + gesture.translation.width,
-                                y: tigerPositions[index].y + gesture.translation.height
-                            )
-
-                            // Calculate the nearest intersection from the dragged position
-                            let nearestIntersectionPoint = self.nearestIntersection(to: draggedPosition)
-
-                            // Check if the nearest intersection is adjacent (including diagonally)
-                            if self.isAdjacentPosition(for: index, position: nearestIntersectionPoint) {
-                                // Check if the nearest intersection is within the grid bounds
-                                if (0...self.spacing * CGFloat(self.columns - 1)).contains(nearestIntersectionPoint.x) &&
-                                   (0...self.spacing * CGFloat(self.rows - 1)).contains(nearestIntersectionPoint.y) {
-                                    self.tigerPositions[index] = nearestIntersectionPoint // Update if valid move
+                            
+                            if game.nextTurn == "B" {
+                                let draggedPosition = CGPoint(
+                                    x: tigerPositions[index].x + gesture.translation.width,
+                                    y: tigerPositions[index].y + gesture.translation.height
+                                )
+                                print("Drag ended at: \(draggedPosition)")
+                                let nearestIntersectionPoint = self.convertToCGPoint(self.convertToGridPoint(draggedPosition))
+                                print("Nearest intersection: \(nearestIntersectionPoint)")
+                                
+                                if self.isValidTigerMove(from: tigerPositions[index], to: nearestIntersectionPoint) {
+                                    self.tigerPositions[index] = nearestIntersectionPoint
+                                    print("Move is valid")
                                 } else {
-                                    // Reset to original position if out of bounds
-                                    self.tigerPositions[index] = self.nearestIntersection(to: self.tigerPositions[index])
+                                    print("Move is not valid")
+                                    tigerPositions[index] = self.convertToCGPoint(self.convertToGridPoint(tigerPositions[index]))
                                 }
-                            } else {
-                                // Reset to original position if not a valid move
-                                self.tigerPositions[index] = self.nearestIntersection(to: self.tigerPositions[index])
+                                
+                                game.nextTurn = "G"
                             }
                         }
                 )
+
         }
     }
 }

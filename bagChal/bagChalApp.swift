@@ -12,6 +12,8 @@ struct bagChalApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environmentObject(BaghChalGame(spacing: 80))
+
         }
     }
 }
