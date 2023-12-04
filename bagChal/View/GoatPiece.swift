@@ -8,72 +8,22 @@
 import SwiftUI
 
 struct GoatPiece: View {
-
     let rows: Int
     let columns: Int
     let spacing: CGFloat
     let diameter: CGFloat
-    var connectedPointsDict: [Point: Set<Point>] // Dictionary of connected points
-    let basePosition = CGPoint(x:160, y: 5 * 80) // Base position for the first goat
-    
+
     @Binding var goatPositions: [CGPoint]
     @Binding var tigerPositions: [CGPoint]
     @ObservedObject var game: BaghChalGame
-
-    @State private var goatsPlaced = 0
     var totalGoats = 20
+    let basePosition = CGPoint(x:160, y: 5 * 80)
 
-    // Convert CGPoint to Point struct
-    private func convertToGridPoint(_ point: CGPoint) -> Point {
-        let x = Int(round(point.x / spacing)) + 1 // Adjust for 1-indexing
-        let y = Int(round(point.y / spacing)) + 1 // Adjust for 1-indexing
-        return Point(x: x, y: y)
-    }
-
-    // Convert Point struct to CGPoint
-    private func convertToCGPoint(_ point: Point) -> CGPoint {
-        let x = CGFloat(point.x - 1) * spacing // Adjust for 1-indexing
-        let y = CGFloat(point.y - 1) * spacing // Adjust for 1-indexing
-        return CGPoint(x: x, y: y)
-    }
-
-    // Function to check if an intersection is free (not occupied by goats or tigers)
-    private func isIntersectionFree(_ point: CGPoint) -> Bool {
-        !goatPositions.contains(point) && !tigerPositions.contains(point)
-    }
-
-    private func isValidGoatMove(from currentPos: CGPoint, to newPos: CGPoint) -> Bool {
-        // Check if all goats are placed
-        if goatsPlaced >= 20 {
-            // Movement logic for after all goats are placed
-            let currentGridPoint = convertToGridPoint(currentPos)
-            let newGridPoint = convertToGridPoint(newPos)
-
-            guard let connectedPoints = connectedPointsDict[currentGridPoint] else { return false }
-
-            let isAdjacent = connectedPoints.contains(newGridPoint)
-            let isFree = isIntersectionFree(newPos)
-            return isAdjacent && isFree
-        } else {
-            // If the goat is already on the board, it cannot move until all goats are placed
-            if isPointWithinBoard(currentPos) {
-                return false
-            }
-            // If the goat is not on the board, check if the new position is free
-            return isIntersectionFree(newPos)
-        }
-    }
-
-    // Function to check if a point is within board boundaries
-    private func isPointWithinBoard(_ point: CGPoint) -> Bool {
-        (0 <= point.x && point.x <= spacing * CGFloat(columns - 1)) &&
-        (0 <= point.y && point.y <= spacing * CGFloat(rows - 1))
-    }
-
+    
     var body: some View {
         ZStack {
             // Counter for the goats in the holding area
-            Text("\(totalGoats - goatsPlaced)")
+            Text("\(totalGoats - game.goatsPlaced)")
                 .font(.title) // Adjust font as needed
                 .foregroundColor(.black) // Adjust color as needed
                 .position(x: basePosition.x, y: basePosition.y + diameter) // Adjust positioning as needed
@@ -92,21 +42,21 @@ struct GoatPiece: View {
                                         x: goatPositions[index].x + gesture.translation.width,
                                         y: goatPositions[index].y + gesture.translation.height
                                     )
-                                    
-                                    let nearestIntersectionPoint = self.convertToCGPoint(self.convertToGridPoint(draggedPosition))
+
+                                    let nearestIntersectionPoint = game.convertToCGPoint(game.convertToGridPoint(draggedPosition))
 
                                     // Update the goat's position only if it's a valid move
-                                    if self.isValidGoatMove(from: goatPositions[index], to: nearestIntersectionPoint) {
-                                        let isGoatInHoldingArea = !self.isPointWithinBoard(goatPositions[index])
+                                    if game.isValidGoatMove(from: goatPositions[index], to: nearestIntersectionPoint) {
+                                        let isGoatInHoldingArea = !game.isPointWithinBoard(goatPositions[index])
                                         if isGoatInHoldingArea {
-                                            goatsPlaced += 1
-                                            print("No of goats Placed: \(goatsPlaced)")
+                                            game.goatsPlaced += 1
+                                            print("No of goats Placed: \(game.goatsPlaced)")
                                             goatPositions[index] = nearestIntersectionPoint
                                         }
                                     } else {
-                                        goatPositions[index] = self.convertToCGPoint(self.convertToGridPoint(goatPositions[index]))
+                                        goatPositions[index] = game.convertToCGPoint(game.convertToGridPoint(goatPositions[index]))
                                     }
-                                    
+
                                     game.nextTurn = "B"
                                 }
                             }

@@ -27,12 +27,14 @@
 		EB4C75DE2AC7B72F00AA575B /* bagChalTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB4C75DD2AC7B72F00AA575B /* bagChalTests.swift */; };
 		EB4C75E82AC7B72F00AA575B /* bagChalUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB4C75E72AC7B72F00AA575B /* bagChalUITests.swift */; };
 		EB4C75EA2AC7B72F00AA575B /* bagChalUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB4C75E92AC7B72F00AA575B /* bagChalUITestsLaunchTests.swift */; };
+		EB7CBEEF2B1B366D009CF97C /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB7CBEEE2B1B366D009CF97C /* Constants.swift */; };
 		EBB868A12B14BDCD00E001E9 /* GridDrawing.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB868A02B14BDCD00E001E9 /* GridDrawing.swift */; };
 		EBB868A32B14BE9C00E001E9 /* IntersectionCircles.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB868A22B14BE9C00E001E9 /* IntersectionCircles.swift */; };
 		EBB868A52B14BEBC00E001E9 /* TigerPiece.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB868A42B14BEBC00E001E9 /* TigerPiece.swift */; };
 		EBB868A72B14CB1200E001E9 /* GoatPiece.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB868A62B14CB1200E001E9 /* GoatPiece.swift */; };
 		EBB868AA2B14CE3500E001E9 /* Engine.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB868A92B14CE3500E001E9 /* Engine.swift */; };
 		EBB868AC2B14D3A000E001E9 /* BaghChalGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB868AB2B14D3A000E001E9 /* BaghChalGame.swift */; };
+		EBCB1FD62B1CA36A00402915 /* GameStatusHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBCB1FD52B1CA36A00402915 /* GameStatusHeaderView.swift */; };
 		EBD08E462B13098E00133B38 /* BaghChalBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD08E452B13098D00133B38 /* BaghChalBoard.swift */; };
 		F36E6EEF034B042408BE9EC1 /* Pods_bagChalTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB0E2DCE19BD61C83E044C06 /* Pods_bagChalTests.framework */; };
 /* End PBXBuildFile section */
@@ -75,12 +77,14 @@
 		EB4C75E32AC7B72F00AA575B /* bagChalUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = bagChalUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB4C75E72AC7B72F00AA575B /* bagChalUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = bagChalUITests.swift; sourceTree = "<group>"; };
 		EB4C75E92AC7B72F00AA575B /* bagChalUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = bagChalUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		EB7CBEEE2B1B366D009CF97C /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		EBB868A02B14BDCD00E001E9 /* GridDrawing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridDrawing.swift; sourceTree = "<group>"; };
 		EBB868A22B14BE9C00E001E9 /* IntersectionCircles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntersectionCircles.swift; sourceTree = "<group>"; };
 		EBB868A42B14BEBC00E001E9 /* TigerPiece.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TigerPiece.swift; sourceTree = "<group>"; };
 		EBB868A62B14CB1200E001E9 /* GoatPiece.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoatPiece.swift; sourceTree = "<group>"; };
 		EBB868A92B14CE3500E001E9 /* Engine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Engine.swift; sourceTree = "<group>"; };
 		EBB868AB2B14D3A000E001E9 /* BaghChalGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaghChalGame.swift; sourceTree = "<group>"; };
+		EBCB1FD52B1CA36A00402915 /* GameStatusHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameStatusHeaderView.swift; sourceTree = "<group>"; };
 		EBD08E452B13098D00133B38 /* BaghChalBoard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaghChalBoard.swift; sourceTree = "<group>"; };
 		F2053C53DF6ECBC0F467C7CD /* Pods-bagChal-bagChalUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bagChal-bagChalUITests.release.xcconfig"; path = "Target Support Files/Pods-bagChal-bagChalUITests/Pods-bagChal-bagChalUITests.release.xcconfig"; sourceTree = "<group>"; };
 		FC6F3B4CA72E150C56D53BAD /* Pods-bagChal.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bagChal.release.xcconfig"; path = "Target Support Files/Pods-bagChal/Pods-bagChal.release.xcconfig"; sourceTree = "<group>"; };
@@ -156,6 +160,7 @@
 				EBB868A22B14BE9C00E001E9 /* IntersectionCircles.swift */,
 				EBB868A42B14BEBC00E001E9 /* TigerPiece.swift */,
 				EBB868A62B14CB1200E001E9 /* GoatPiece.swift */,
+				EBCB1FD52B1CA36A00402915 /* GameStatusHeaderView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -225,6 +230,7 @@
 			children = (
 				EBB868A92B14CE3500E001E9 /* Engine.swift */,
 				EBB868AB2B14D3A000E001E9 /* BaghChalGame.swift */,
+				EB7CBEEE2B1B366D009CF97C /* Constants.swift */,
 			);
 			path = "Game Engine";
 			sourceTree = "<group>";
@@ -447,10 +453,12 @@
 				EBB868A32B14BE9C00E001E9 /* IntersectionCircles.swift in Sources */,
 				EB4C75CF2AC7B72B00AA575B /* ContentView.swift in Sources */,
 				EBD08E462B13098E00133B38 /* BaghChalBoard.swift in Sources */,
+				EBCB1FD62B1CA36A00402915 /* GameStatusHeaderView.swift in Sources */,
 				EB0F68B52ACAE2CF00FE4D24 /* RegisterView.swift in Sources */,
 				EBB868A52B14BEBC00E001E9 /* TigerPiece.swift in Sources */,
 				EBB868AC2B14D3A000E001E9 /* BaghChalGame.swift in Sources */,
 				EB0F68AB2AC99A4200FE4D24 /* LoginRegisterSegmentVIew.swift in Sources */,
+				EB7CBEEF2B1B366D009CF97C /* Constants.swift in Sources */,
 				EB0F68AF2AC9ABDF00FE4D24 /* LoginView.swift in Sources */,
 				EBB868A72B14CB1200E001E9 /* GoatPiece.swift in Sources */,
 				EBB868AA2B14CE3500E001E9 /* Engine.swift in Sources */,

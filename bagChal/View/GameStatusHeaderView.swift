@@ -11,13 +11,14 @@ struct GameStatusHeaderView: View {
 
     @Binding var baghsTrapped: Int
     @Binding var goatsCaptured: Int
-    
+    @ObservedObject var game: BaghChalGame
+
     var body: some View {
         HStack {
             Image("tigerTrapped")
                 .resizable()
                 .frame(width: 50, height: 50)
-            Text("Baghs Trapped: \(baghsTrapped)")
+            Text("Baghs Trapped: \(game.baghsTrapped)")
                 .font(.subheadline)
             
             Spacer()
@@ -29,11 +30,5 @@ struct GameStatusHeaderView: View {
                 .font(.subheadline)
         }
         .padding()
-    }
-}
-
-struct GameStatusHeaderView_Previews: PreviewProvider {
-    static var previews: some View {
-        GameStatusHeaderView(baghsTrapped: .constant(0), goatsCaptured: .constant(0))
     }
 }
