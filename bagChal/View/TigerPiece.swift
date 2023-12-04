@@ -7,19 +7,16 @@
 
 import SwiftUI
 
-import SwiftUI
-
 struct TigerPiece: View {
     let rows: Int
     let columns: Int
     let spacing: CGFloat
     let diameter: CGFloat
     var connectedPointsDict: [Point: Set<Point>]
-    
+
     @Binding var goatPositions: [CGPoint]
     @Binding var tigerPositions: [CGPoint]
-    @Binding var game: BaghChalGame
-
+    @ObservedObject var game: BaghChalGame
 
     private func convertToGridPoint(_ point: CGPoint) -> Point {
         let x = Int(round(point.x / spacing)) + 1  // Adjust for 1-indexing
@@ -37,13 +34,46 @@ struct TigerPiece: View {
     private func isValidTigerMove(from currentPos: CGPoint, to newPos: CGPoint) -> Bool {
         let currentGridPoint = convertToGridPoint(currentPos)
         let newGridPoint = convertToGridPoint(newPos)
-            
+
         guard let connectedPoints = connectedPointsDict[currentGridPoint] else { return false }
-        
+
         let isAdjacent = connectedPoints.contains(newGridPoint)
         let isFree = !goatPositions.contains(newPos) && !tigerPositions.contains(newPos)
-                
+
+        updateGameState()
         return isAdjacent && isFree
+    }
+
+    // Add a method to check if the tiger is trapped
+    private func isTigerTrapped(at position: CGPoint) -> Bool {
+        let currentGridPoint = convertToGridPoint(position)
+        guard let connectedPoints = connectedPointsDict[currentGridPoint] else { return true }
+
+        // Check if all adjacent points are occupied by tigers or goats
+        for point in connectedPoints {
+            let adjacentPosition = convertToCGPoint(point)
+            if !goatPositions.contains(adjacentPosition) && !tigerPositions.contains(adjacentPosition) {
+                return false
+            }
+        }
+        return true
+    }
+
+    // Call this method after each move to check if any tiger is trapped
+    func checkTigersTrapped(tigerPositions: [CGPoint]) {
+        for position in tigerPositions {
+            if isTigerTrapped(at: position) {
+                game.baghsTrapped += 1
+            }
+        }
+    }
+
+    func tigerTrapped() {
+        game.baghsTrapped += 1
+    }
+
+    func updateGameState() {
+        checkTigersTrapped(tigerPositions: self.tigerPositions)
     }
 
     var body: some View {
@@ -52,31 +82,33 @@ struct TigerPiece: View {
                 .resizable()
                 .frame(width: diameter, height: diameter)
                 .position(tigerPositions[index])
-                
+
                 .gesture(
                     DragGesture()
                         .onChanged { gesture in
                             print("Dragging to: \(gesture.location)")
                         }
                         .onEnded { gesture in
-                            
+
                             if game.nextTurn == "B" {
                                 let draggedPosition = CGPoint(
                                     x: tigerPositions[index].x + gesture.translation.width,
                                     y: tigerPositions[index].y + gesture.translation.height
                                 )
-                                print("Drag ended at: \(draggedPosition)")
                                 let nearestIntersectionPoint = self.convertToCGPoint(self.convertToGridPoint(draggedPosition))
-                                print("Nearest intersection: \(nearestIntersectionPoint)")
-                                
+
                                 if self.isValidTigerMove(from: tigerPositions[index], to: nearestIntersectionPoint) {
                                     self.tigerPositions[index] = nearestIntersectionPoint
-                                    print("Move is valid")
                                 } else {
-                                    print("Move is not valid")
                                     tigerPositions[index] = self.convertToCGPoint(self.convertToGridPoint(tigerPositions[index]))
                                 }
-                                
+
+                                if isTigerTrapped(at: tigerPositions[index]) {
+
+                                    print("Tiger at index \(index) is trapped.")
+                                    self.tigerTrapped()
+                                }
+
                                 game.nextTurn = "G"
                             }
                         }
