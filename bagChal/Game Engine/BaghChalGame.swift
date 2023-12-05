@@ -17,6 +17,7 @@ class BaghChalGame: ObservableObject {
     @Published var goatPositions: [CGPoint]
 
     var connectedPointsDict: [Point: Set<Point>]
+    private var trappedTigers: Set<Int> = [] // Tracks indices of trapped tigers
 
     let rows: Int // Set as needed
     let columns: Int // Set as needed
@@ -76,7 +77,6 @@ class BaghChalGame: ObservableObject {
         !goatPositions.contains(point) && !tigerPositions.contains(point)
     }
 
-    // Check if the new position is adjacent and valid according to the game rules
     func isValidTigerMove(from currentPos: CGPoint, to newPos: CGPoint) -> Bool {
         let currentGridPoint = convertToGridPoint(currentPos)
         let newGridPoint = convertToGridPoint(newPos)
@@ -84,49 +84,45 @@ class BaghChalGame: ObservableObject {
         guard let connectedPoints = connectedPointsDict[currentGridPoint] else { return false }
 
         let isAdjacent = connectedPoints.contains(newGridPoint)
-        
         let isFree = isIntersectionFree(newPos)
 
-        updateGameState()
         return isAdjacent && isFree
     }
 
-    // Add a method to check if the tiger is trapped
+    func updateTrappedTigers() {
+        for (index, position) in tigerPositions.enumerated() {
+            if isTigerTrapped(at: position) {
+                trappedTigers.insert(index)
+            } else {
+                trappedTigers.remove(index)
+            }
+        }
+        baghsTrapped = trappedTigers.count
+    }
+    
     func isTigerTrapped(at position: CGPoint) -> Bool {
         let currentGridPoint = convertToGridPoint(position)
         guard let connectedPoints = connectedPointsDict[currentGridPoint] else { return true }
 
-        // Check if all adjacent points are occupied by tigers or goats
         for point in connectedPoints {
             let adjacentPosition = convertToCGPoint(point)
-            if !goatPositions.contains(adjacentPosition) && !tigerPositions.contains(adjacentPosition) {
+            if isIntersectionFree(adjacentPosition) {
                 return false
             }
         }
         return true
     }
 
-    // Call this method after each move to check if any tiger is trapped
-    func checkTigersTrapped(tigerPositions: [CGPoint]) {
-        for position in tigerPositions {
-            if isTigerTrapped(at: position) {
-                self.baghsTrapped += 1
-            }
-        }
-    }
-
-    func tigerTrapped() {
-        self.baghsTrapped += 1
-    }
-
     func updateGameState() {
-        checkTigersTrapped(tigerPositions: self.tigerPositions)
+        updateTrappedTigers()
     }
  
     func isValidGoatMove(from currentPos: CGPoint, to newPos: CGPoint) -> Bool {
-        // Check if all goats are placed
+        // Movement is only valid within the board boundaries.
+        guard isPointWithinBoard(newPos) else { return false }
+
+        // If all goats are placed, they can only move to adjacent positions
         if goatsPlaced >= 20 {
-            // Movement logic for after all goats are placed
             let currentGridPoint = convertToGridPoint(currentPos)
             let newGridPoint = convertToGridPoint(newPos)
 
@@ -136,13 +132,10 @@ class BaghChalGame: ObservableObject {
             let isFree = isIntersectionFree(newPos)
             return isAdjacent && isFree
         } else {
-            // If the goat is already on the board, it cannot move until all goats are placed
-            if isPointWithinBoard(currentPos) {
-                return false
-            }
-            // If the goat is not on the board, check if the new position is free
+            // If not all goats are placed, they can be placed on any free intersection
             return isIntersectionFree(newPos)
         }
     }
+
 }
 

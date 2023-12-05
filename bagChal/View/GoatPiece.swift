@@ -45,19 +45,18 @@ struct GoatPiece: View {
 
                                     let nearestIntersectionPoint = game.convertToCGPoint(game.convertToGridPoint(draggedPosition))
 
-                                    // Update the goat's position only if it's a valid move
+                                    // Check if the move is valid and within the board boundaries
                                     if game.isValidGoatMove(from: goatPositions[index], to: nearestIntersectionPoint) {
-                                        let isGoatInHoldingArea = !game.isPointWithinBoard(goatPositions[index])
-                                        if isGoatInHoldingArea {
-                                            game.goatsPlaced += 1
-                                            print("No of goats Placed: \(game.goatsPlaced)")
-                                            goatPositions[index] = nearestIntersectionPoint
-                                        }
+                                        // If the move is valid, update the goat's position and switch turns
+                                        goatPositions[index] = nearestIntersectionPoint
+                                        game.nextTurn = "B" // Switch to tiger's turn
                                     } else {
+                                        // If the move is not valid, revert the goat's position to the nearest valid intersection
                                         goatPositions[index] = game.convertToCGPoint(game.convertToGridPoint(goatPositions[index]))
+                                        // Do not switch turns, since the move was invalid
                                     }
-
-                                    game.nextTurn = "B"
+                                    // Update the game state after the attempted move
+                                    game.updateGameState()
                                 }
                             }
                     )

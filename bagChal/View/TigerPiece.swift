@@ -25,11 +25,7 @@ struct TigerPiece: View {
                 .position(tigerPositions[index])
                 .gesture(
                     DragGesture()
-                        .onChanged { gesture in
-                            print("Dragging to: \(gesture.location)")
-                        }
                         .onEnded { gesture in
-
                             if game.nextTurn == "B" {
                                 let draggedPosition = CGPoint(
                                     x: tigerPositions[index].x + gesture.translation.width,
@@ -37,19 +33,20 @@ struct TigerPiece: View {
                                 )
                                 let nearestIntersectionPoint = game.convertToCGPoint(game.convertToGridPoint(draggedPosition))
 
+                                // Check if the move is valid
                                 if game.isValidTigerMove(from: tigerPositions[index], to: nearestIntersectionPoint) {
-                                    self.tigerPositions[index] = nearestIntersectionPoint
+                                    // Update tiger position
+                                    tigerPositions[index] = nearestIntersectionPoint
+
+                                    // Update the game state
+                                    game.updateGameState()
+
+                                    // Change turn to goats
+                                    game.nextTurn = "G"
                                 } else {
+                                    // Revert to original position if the move is not valid
                                     tigerPositions[index] = game.convertToCGPoint(game.convertToGridPoint(tigerPositions[index]))
                                 }
-
-                                if game.isTigerTrapped(at: tigerPositions[index]) {
-
-                                    print("Tiger at index \(index) is trapped.")
-                                    game.tigerTrapped()
-                                }
-
-                                game.nextTurn = "G"
                             }
                         }
                 )
