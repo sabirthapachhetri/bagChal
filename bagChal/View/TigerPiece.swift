@@ -33,15 +33,25 @@ struct TigerPiece: View {
                                 )
                                 let nearestIntersectionPoint = game.convertToCGPoint(game.convertToGridPoint(draggedPosition))
 
-                                // Check if the move is valid
-                                if game.isValidTigerMove(from: tigerPositions[index], to: nearestIntersectionPoint) {
-                                    // Update tiger position
+                                var moveMade = false // Flag to check if a move has been made
+
+                                // First, check if the tiger can capture a goat
+                                if game.canTigerCapture(from: tigerPositions[index], to: nearestIntersectionPoint) {
+                                    // Perform the capture move
+                                    game.performTigerCapture(from: tigerPositions[index], to: nearestIntersectionPoint)
                                     tigerPositions[index] = nearestIntersectionPoint
+                                    moveMade = true
+                                }
+                                // If not a capture move, check if it's a valid regular move
+                                else if game.isValidTigerMove(from: tigerPositions[index], to: nearestIntersectionPoint) {
+                                    // Update tiger position for a regular move
+                                    tigerPositions[index] = nearestIntersectionPoint
+                                    moveMade = true
+                                }
 
-                                    // Update the game state
+                                if moveMade {
+                                    // Update the game state and switch turns only if a valid move was made
                                     game.updateGameState()
-
-                                    // Change turn to goats
                                     game.nextTurn = "G"
                                 } else {
                                     // Revert to original position if the move is not valid

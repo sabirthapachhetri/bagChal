@@ -15,6 +15,11 @@ struct Point: Hashable {
     let y: Int
 }
 
+struct Move {
+    var from: Point
+    var to: Point
+}
+
 // Now, use Point as the key for the dictionary.
 var connectedPointsDict: [Point: Set<Point>] = [
     Point(x: 1, y: 1): [Point(x: 1, y: 2), Point(x: 2, y: 1), Point(x: 2, y: 2)],

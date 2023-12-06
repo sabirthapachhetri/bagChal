@@ -37,13 +37,30 @@ struct BaghChalBoard: View {
             .padding(spacing)
         }
         .alert(isPresented: $showAlert) {
-            Alert(
-                title: Text("Game Over"),
-                message: Text("Goats have won the game!"),
-                dismissButton: .default(Text("Restart")) {
-                    game.resetGame()
-                }
-            )
+            if game.goatsCaptured >= 5 {
+                // Alert for Tiger's win
+                return Alert(
+                    title: Text("Game Over"),
+                    message: Text("Tigers have won the game!"),
+                    dismissButton: .default(Text("Restart")) {
+                        game.resetGame()
+                    }
+                )
+            } else {
+                // Alert for Goat's win
+                return Alert(
+                    title: Text("Game Over"),
+                    message: Text("Goats have won the game!"),
+                    dismissButton: .default(Text("Restart")) {
+                        game.resetGame()
+                    }
+                )
+            }
+        }
+        .onChange(of: game.goatsCaptured) { newValue in
+            if newValue >= 5 {
+                showAlert = true
+            }
         }
         .onChange(of: game.baghsTrapped) { newValue in
             if newValue == 4 {

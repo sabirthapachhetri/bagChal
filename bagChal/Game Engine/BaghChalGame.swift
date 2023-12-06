@@ -186,3 +186,45 @@ extension BaghChalGame {
         trappedTigers.removeAll()
     }
 }
+
+extension BaghChalGame {
+    func canTigerCapture(from currentPos: CGPoint, to newPos: CGPoint) -> Bool {
+        // Convert CGPoints to grid Points
+        let currentGridPoint = convertToGridPoint(currentPos)
+        let newGridPoint = convertToGridPoint(newPos)
+
+        // Calculate the mid-grid point
+        let midGridPoint = Point(x: (currentGridPoint.x + newGridPoint.x) / 2, y: (currentGridPoint.y + newGridPoint.y) / 2)
+
+        // Convert the mid-grid point back to CGPoint to check the goat's position
+        let midPoint = convertToCGPoint(midGridPoint)
+
+        // Check if there's a goat at the mid-point and if the new position is free
+        return goatPositions.contains(midPoint) && isIntersectionFree(newPos) &&
+               baghSpecialCaptureMovesDict[currentGridPoint]?.contains(newGridPoint) == true
+    }
+
+    func performTigerCapture(from currentPos: CGPoint, to newPos: CGPoint) {
+        // Convert CGPoints to grid Points for calculations
+        let currentGridPoint = convertToGridPoint(currentPos)
+        let newGridPoint = convertToGridPoint(newPos)
+        let midGridPoint = Point(x: (currentGridPoint.x + newGridPoint.x) / 2, y: (currentGridPoint.y + newGridPoint.y) / 2)
+
+        // Convert the mid-grid point back to CGPoint for position manipulation
+        let midPoint = convertToCGPoint(midGridPoint)
+
+        // Remove the goat at the mid-point
+        if let index = goatPositions.firstIndex(of: midPoint) {
+            goatPositions.remove(at: index)
+            goatsCaptured += 1
+        }
+
+        // Move the tiger to the new position
+        if let tigerIndex = tigerPositions.firstIndex(of: currentPos) {
+            tigerPositions[tigerIndex] = newPos
+        }
+
+        // Update game state after capture
+        updateGameState()
+    }
+}

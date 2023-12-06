@@ -7,90 +7,68 @@
 
 import Foundation
 
-let INF: Double = 1e6
-
 class Engine {
-
 //    var depth: Int
 //
 //    init(depth: Int = 5) {
 //        self.depth = depth
 //    }
 //
+//    // A simple static evaluation function
 //    func staticEvaluation(for game: BaghChalGame) -> Double {
-//        if !game.isGameOver() {
-//            return 150.0 * Double(game.baghsTrapped) - 120.0 * Double(game.goatsCaptured)
-//        }
-//        guard let winner = game.winner() else { return 0.0 }
-//        if winner == "G" {
-//            return INF
-//        } else if winner == "B" {
-//            return -INF
-//        } else {
-//            return 0.0
-//        }
+//        // This is a basic heuristic. You may need to adjust it based on the game's rules and strategies.
+//        let score = 10.0 * Double(game.goatsCaptured) - 5.0 * Double(game.baghsTrapped)
+//        return score
 //    }
 //
-//    func minimax(game: BaghChalGame, depth: Int, alpha: Double, beta: Double, maxPlayer: Bool) -> (move: Move?, eval: Double) {
-//        if depth == 0 || game.isGameOver() {
-//            return (nil, staticEvaluation(for: game))
+//    // The minimax algorithm with alpha-beta pruning
+//    func minimax(game: BaghChalGame, depth: Int, alpha: Double, beta: Double, maximizingPlayer: Bool) -> Double {
+//        if depth == 0 || game.isGameOver {
+//            return staticEvaluation(for: game)
 //        }
 //
-//        var localAlpha = alpha
-//        var localBeta = beta
+//        var alpha = alpha
+//        var beta = beta
 //
-//        if maxPlayer {
-//            var maxEval = -INF
-//            var bestMove: Move? = nil
+//        if maximizingPlayer {
+//            var maxEval = -Double.infinity
 //            for move in game.possibleMoves() {
-//                let gCopy = game.copy()
-//                gCopy.move(move)
-//                let eval = minimax(game: gCopy, depth: depth - 1, alpha: localAlpha, beta: localBeta, maxPlayer: false).eval
-//                if eval > maxEval {
-//                    maxEval = eval
-//                    bestMove = move
-//                }
-//                localAlpha = max(localAlpha, eval)
-//                if localBeta <= localAlpha {
+//                let evaluation = minimax(game: game.simulateMove(move), depth: depth - 1, alpha: alpha, beta: beta, maximizingPlayer: false)
+//                maxEval = max(maxEval, evaluation)
+//                alpha = max(alpha, evaluation)
+//                if beta <= alpha {
 //                    break
 //                }
 //            }
-//            return (bestMove, maxEval)
+//            return maxEval
 //        } else {
-//            var minEval = INF
-//            var bestMove: Move? = nil
+//            var minEval = Double.infinity
 //            for move in game.possibleMoves() {
-//                let gCopy = game.copy()
-//                gCopy.move(move)
-//                let eval = minimax(game: gCopy, depth: depth - 1, alpha: localAlpha, beta: localBeta, maxPlayer: true).eval
-//                if eval < minEval {
-//                    minEval = eval
-//                    bestMove = move
-//                }
-//                localBeta = min(localBeta, eval)
-//                if localBeta <= localAlpha {
+//                let evaluation = minimax(game: game.simulateMove(move), depth: depth - 1, alpha: alpha, beta: beta, maximizingPlayer: true)
+//                minEval = min(minEval, evaluation)
+//                beta = min(beta, evaluation)
+//                if beta <= alpha {
 //                    break
 //                }
 //            }
-//            return (bestMove, minEval)
+//            return minEval
 //        }
 //    }
 //
-//    func bestBaghMove(for game: BaghChalGame) -> (move: Move?, eval: Double) {
-//        assert(!game.isGameOver())
-//        return minimax(game: game, depth: depth, alpha: -INF, beta: INF, maxPlayer: false)
-//    }
+//    // Determine the best move for the current player
+//    func bestMove(for game: BaghChalGame) -> Move {
+//        var bestScore = (game.nextTurn == "G" ? -Double.infinity : Double.infinity)
+//        var bestMove: Move?
 //
-//    func bestGoatMove(for game: BaghChalGame) -> (move: Move?, eval: Double) {
-//        assert(!game.isGameOver())
-//        return minimax(game: game, depth: depth, alpha: -INF, beta: INF, maxPlayer: true)
-//    }
-//
-//    func getBestMove(for game: BaghChalGame) -> (move: Move?, eval: Double) {
-//        if game.nextTurn == "G" {
-//            return bestGoatMove(for: game)
-//        } else {
-//            return bestBaghMove(for: game)
+//        for move in game.possibleMoves() {
+//            let score = minimax(game: game.simulateMove(move), depth: depth, alpha: -Double.infinity, beta: Double.infinity, maximizingPlayer: game.nextTurn == "G")
+//            
+//            if (game.nextTurn == "G" && score > bestScore) || (game.nextTurn == "B" && score < bestScore) {
+//                bestScore = score
+//                bestMove = move
+//            }
 //        }
+//
+//        return bestMove ?? Move.defaultMove() // Implement a default move if no other move is found
 //    }
 }
