@@ -17,13 +17,8 @@ struct BaghChalBoard: View {
 
     let connectedPoints = connectedPointsDict // Assuming this is initialized somewhere
 
-    @StateObject private var game: BaghChalGame
-
-    init() {
-        // Initialize the game logic with required parameters
-        let gameLogic = BaghChalGame(spacing: spacing, rows: rows, columns: columns, diameter: intersectionCircleDiameter, connectedPointsDict: connectedPoints)
-        _game = StateObject(wrappedValue: gameLogic)
-    }
+    @StateObject private var game = BaghChalGame(spacing: 80, rows: 5, columns: 5, diameter: 40, connectedPointsDict: connectedPointsDict)
+    @State private var showAlert = false
 
     var body: some View {
         VStack {
@@ -40,6 +35,20 @@ struct BaghChalBoard: View {
             }
             .frame(width: spacing * CGFloat(columns - 1), height: spacing * CGFloat(rows - 1))
             .padding(spacing)
+        }
+        .alert(isPresented: $showAlert) {
+            Alert(
+                title: Text("Game Over"),
+                message: Text("Goats have won the game!"),
+                dismissButton: .default(Text("Restart")) {
+                    game.resetGame()
+                }
+            )
+        }
+        .onChange(of: game.baghsTrapped) { newValue in
+            if newValue == 4 {
+                showAlert = true
+            }
         }
     }
 }

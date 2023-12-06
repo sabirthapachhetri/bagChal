@@ -50,6 +50,8 @@ struct GoatPiece: View {
                                         // If the move is valid, update the goat's position and switch turns
                                         goatPositions[index] = nearestIntersectionPoint
                                         game.nextTurn = "B" // Switch to tiger's turn
+                                        game.goatsPlaced += 1 // Only if it's a new goat being placed
+
                                     } else {
                                         // If the move is not valid, revert the goat's position to the nearest valid intersection
                                         goatPositions[index] = game.convertToCGPoint(game.convertToGridPoint(goatPositions[index]))

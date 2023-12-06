@@ -48,7 +48,7 @@ var connectedPointsDict: [Point: Set<Point>] = [
     Point(x: 5, y: 5): [Point(x: 4, y: 5), Point(x: 5, y: 4), Point(x: 4, y: 4)]
 ]
 
-var baghMovesDict: [Point: Set<Point>] = [
+var baghSpecialCaptureMovesDict: [Point: Set<Point>] = [
     Point(x: 1, y: 1): [Point(x: 1, y: 3), Point(x: 3, y: 1), Point(x: 3, y: 3)],
     Point(x: 1, y: 2): [Point(x: 3, y: 2), Point(x: 1, y: 4)],
     Point(x: 1, y: 3): [Point(x: 3, y: 3), Point(x: 3, y: 1), Point(x: 1, y: 5), Point(x: 1, y: 1), Point(x: 3, y: 5)],

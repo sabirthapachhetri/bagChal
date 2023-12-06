@@ -15,9 +15,11 @@ class BaghChalGame: ObservableObject {
     @Published var goatsPlaced: Int = 0 // Number of goats placed on the board
     @Published var tigerPositions: [CGPoint]
     @Published var goatPositions: [CGPoint]
-
+    @Published var isGameOver: Bool = false
+    @Published var winningSide: String = ""
+    
     var connectedPointsDict: [Point: Set<Point>]
-    private var trappedTigers: Set<Int> = [] // Tracks indices of trapped tigers
+    var trappedTigers: Set<Int> = [] // Tracks indices of trapped tigers
 
     let rows: Int // Set as needed
     let columns: Int // Set as needed
@@ -98,6 +100,12 @@ class BaghChalGame: ObservableObject {
             }
         }
         baghsTrapped = trappedTigers.count
+        
+        // Check if all tigers are trapped and update game over state
+        if baghsTrapped == 4 {
+            isGameOver = true
+            winningSide = "Goats"
+        }
     }
     
     func isTigerTrapped(at position: CGPoint) -> Bool {
@@ -123,6 +131,7 @@ class BaghChalGame: ObservableObject {
 
         // If all goats are placed, they can only move to adjacent positions
         if goatsPlaced >= 20 {
+            // Movement logic for after all goats are placed
             let currentGridPoint = convertToGridPoint(currentPos)
             let newGridPoint = convertToGridPoint(newPos)
 
@@ -132,10 +141,48 @@ class BaghChalGame: ObservableObject {
             let isFree = isIntersectionFree(newPos)
             return isAdjacent && isFree
         } else {
-            // If not all goats are placed, they can be placed on any free intersection
+            // If the goat is already on the board, it cannot move until all goats are placed
+            if isPointWithinBoard(currentPos) {
+                return false
+            }
+            // If the goat is not on the board, check if the new position is free
             return isIntersectionFree(newPos)
         }
     }
-
 }
 
+extension BaghChalGame {
+    func resetGame() {
+        // Reset game state properties
+        baghsTrapped = 0
+        goatsCaptured = 0
+        nextTurn = "G"
+        goatsPlaced = 0
+        isGameOver = false
+        winningSide = ""
+
+        // Reset tiger positions to initial locations
+        tigerPositions = [
+            CGPoint(x: 0 * spacing, y: 0 * spacing),       // Top-left
+            CGPoint(x: 4 * spacing, y: 0 * spacing),       // Top-right
+            CGPoint(x: 4 * spacing, y: 4 * spacing),       // Bottom-right
+            CGPoint(x: 0 * spacing, y: 4 * spacing)        // Bottom-left
+        ]
+
+        // Reset goat positions to a holding area
+        let basePosition = CGPoint(x: 160, y: 5 * spacing) // Adjust as needed for your holding area
+        let overlayOffset = CGPoint(x: 0, y: 0) // Define the offset for overlaying goats in the holding area
+
+        goatPositions = (0..<20).map { index in
+            // Calculate the offset for each goat based on its index
+            let xOffset = CGFloat(index) * overlayOffset.x
+            let yOffset = CGFloat(index) * overlayOffset.y
+
+            // Apply the offset to the base position
+            return CGPoint(x: basePosition.x + xOffset, y: basePosition.y + yOffset)
+        }
+
+        // Reset the trappedTigers set
+        trappedTigers.removeAll()
+    }
+}
