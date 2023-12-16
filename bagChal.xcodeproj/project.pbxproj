@@ -8,35 +8,28 @@
 
 /* Begin PBXBuildFile section */
 		132ABC55174FAC3FDE0A2657 /* Pods_bagChal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E23F2DC2DD693A1EB3F8F91 /* Pods_bagChal.framework */; };
-		830FC6C0E6C851E51044DFC6 /* Pods_bagChal_bagChalUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A6ECA10C03C979A87CEB21D /* Pods_bagChal_bagChalUITests.framework */; };
-		EB0F68AB2AC99A4200FE4D24 /* LoginRegisterSegmentVIew.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB0F68AA2AC99A4200FE4D24 /* LoginRegisterSegmentVIew.swift */; };
-		EB0F68AF2AC9ABDF00FE4D24 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB0F68AE2AC9ABDF00FE4D24 /* LoginView.swift */; };
+		EB0F68AB2AC99A4200FE4D24 /* LoginVIew.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB0F68AA2AC99A4200FE4D24 /* LoginVIew.swift */; };
+		EB0F68AF2AC9ABDF00FE4D24 /* LoginRegisterChoiceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB0F68AE2AC9ABDF00FE4D24 /* LoginRegisterChoiceView.swift */; };
 		EB0F68B52ACAE2CF00FE4D24 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB0F68B42ACAE2CF00FE4D24 /* RegisterView.swift */; };
-		EB0F68B92ACAEB0C00FE4D24 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = EB0F68B82ACAEB0C00FE4D24 /* FirebaseAuth */; };
-		EB0F68BB2ACAEB0C00FE4D24 /* FirebaseAuthCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = EB0F68BA2ACAEB0C00FE4D24 /* FirebaseAuthCombine-Community */; };
-		EB0F68BD2ACAEB0C00FE4D24 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = EB0F68BC2ACAEB0C00FE4D24 /* FirebaseDatabase */; };
-		EB0F68BF2ACAEB0C00FE4D24 /* FirebaseDatabaseSwift in Frameworks */ = {isa = PBXBuildFile; productRef = EB0F68BE2ACAEB0C00FE4D24 /* FirebaseDatabaseSwift */; };
-		EB0F68C12ACAEB0C00FE4D24 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = EB0F68C02ACAEB0C00FE4D24 /* FirebaseFirestore */; };
-		EB0F68C32ACAEB0C00FE4D24 /* FirebaseFirestoreCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = EB0F68C22ACAEB0C00FE4D24 /* FirebaseFirestoreCombine-Community */; };
-		EB0F68C52ACAEB0C00FE4D24 /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = EB0F68C42ACAEB0C00FE4D24 /* FirebaseFirestoreSwift */; };
-		EB0F68C72ACAEB0C00FE4D24 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = EB0F68C62ACAEB0C00FE4D24 /* FirebaseStorage */; };
 		EB4C75CD2AC7B72B00AA575B /* bagChalApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB4C75CC2AC7B72B00AA575B /* bagChalApp.swift */; };
 		EB4C75CF2AC7B72B00AA575B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB4C75CE2AC7B72B00AA575B /* ContentView.swift */; };
 		EB4C75D12AC7B72F00AA575B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EB4C75D02AC7B72F00AA575B /* Assets.xcassets */; };
 		EB4C75D42AC7B72F00AA575B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EB4C75D32AC7B72F00AA575B /* Preview Assets.xcassets */; };
-		EB4C75DE2AC7B72F00AA575B /* bagChalTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB4C75DD2AC7B72F00AA575B /* bagChalTests.swift */; };
-		EB4C75E82AC7B72F00AA575B /* bagChalUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB4C75E72AC7B72F00AA575B /* bagChalUITests.swift */; };
-		EB4C75EA2AC7B72F00AA575B /* bagChalUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB4C75E92AC7B72F00AA575B /* bagChalUITestsLaunchTests.swift */; };
 		EB7CBEEF2B1B366D009CF97C /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB7CBEEE2B1B366D009CF97C /* Constants.swift */; };
+		EBABCC202B2DAE150089DB60 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = EBABCC1F2B2DAE150089DB60 /* FirebaseAuth */; };
+		EBABCC222B2DAE150089DB60 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = EBABCC212B2DAE150089DB60 /* FirebaseDatabase */; };
+		EBABCC242B2DAE150089DB60 /* FirebaseDatabaseSwift in Frameworks */ = {isa = PBXBuildFile; productRef = EBABCC232B2DAE150089DB60 /* FirebaseDatabaseSwift */; };
+		EBABCC262B2DAE150089DB60 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = EBABCC252B2DAE150089DB60 /* FirebaseFirestore */; };
+		EBABCC282B2DBAB10089DB60 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBABCC272B2DBAB10089DB60 /* HomeView.swift */; };
 		EBB868A12B14BDCD00E001E9 /* GridDrawing.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB868A02B14BDCD00E001E9 /* GridDrawing.swift */; };
 		EBB868A32B14BE9C00E001E9 /* IntersectionCircles.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB868A22B14BE9C00E001E9 /* IntersectionCircles.swift */; };
 		EBB868A52B14BEBC00E001E9 /* TigerPiece.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB868A42B14BEBC00E001E9 /* TigerPiece.swift */; };
 		EBB868A72B14CB1200E001E9 /* GoatPiece.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB868A62B14CB1200E001E9 /* GoatPiece.swift */; };
 		EBB868AA2B14CE3500E001E9 /* Engine.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB868A92B14CE3500E001E9 /* Engine.swift */; };
 		EBB868AC2B14D3A000E001E9 /* BaghChalGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB868AB2B14D3A000E001E9 /* BaghChalGame.swift */; };
+		EBBAE8F12B2D7DC4005891A8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = EBBAE8F02B2D7DC4005891A8 /* GoogleService-Info.plist */; };
 		EBCB1FD62B1CA36A00402915 /* GameStatusHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBCB1FD52B1CA36A00402915 /* GameStatusHeaderView.swift */; };
 		EBD08E462B13098E00133B38 /* BaghChalBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD08E452B13098D00133B38 /* BaghChalBoard.swift */; };
-		F36E6EEF034B042408BE9EC1 /* Pods_bagChalTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB0E2DCE19BD61C83E044C06 /* Pods_bagChalTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,15 +50,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0DC7DD47837AFC27CA63C952 /* Pods-bagChalTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bagChalTests.release.xcconfig"; path = "Target Support Files/Pods-bagChalTests/Pods-bagChalTests.release.xcconfig"; sourceTree = "<group>"; };
 		4E23F2DC2DD693A1EB3F8F91 /* Pods_bagChal.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_bagChal.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		50661D44043C69D4EBBE1BB2 /* Pods-bagChalTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bagChalTests.debug.xcconfig"; path = "Target Support Files/Pods-bagChalTests/Pods-bagChalTests.debug.xcconfig"; sourceTree = "<group>"; };
 		5DAA199DB6861D2E305BD387 /* Pods-bagChal.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bagChal.debug.xcconfig"; path = "Target Support Files/Pods-bagChal/Pods-bagChal.debug.xcconfig"; sourceTree = "<group>"; };
-		6A6ECA10C03C979A87CEB21D /* Pods_bagChal_bagChalUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_bagChal_bagChalUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		946B10D638259E72AE358CA5 /* Pods-bagChal-bagChalUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bagChal-bagChalUITests.debug.xcconfig"; path = "Target Support Files/Pods-bagChal-bagChalUITests/Pods-bagChal-bagChalUITests.debug.xcconfig"; sourceTree = "<group>"; };
-		BB0E2DCE19BD61C83E044C06 /* Pods_bagChalTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_bagChalTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		EB0F68AA2AC99A4200FE4D24 /* LoginRegisterSegmentVIew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRegisterSegmentVIew.swift; sourceTree = "<group>"; };
-		EB0F68AE2AC9ABDF00FE4D24 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		EB0F68AA2AC99A4200FE4D24 /* LoginVIew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVIew.swift; sourceTree = "<group>"; };
+		EB0F68AE2AC9ABDF00FE4D24 /* LoginRegisterChoiceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRegisterChoiceView.swift; sourceTree = "<group>"; };
 		EB0F68B42ACAE2CF00FE4D24 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 		EB4C75C92AC7B72B00AA575B /* bagChal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = bagChal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB4C75CC2AC7B72B00AA575B /* bagChalApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = bagChalApp.swift; sourceTree = "<group>"; };
@@ -73,20 +61,18 @@
 		EB4C75D02AC7B72F00AA575B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EB4C75D32AC7B72F00AA575B /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		EB4C75D92AC7B72F00AA575B /* bagChalTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = bagChalTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		EB4C75DD2AC7B72F00AA575B /* bagChalTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = bagChalTests.swift; sourceTree = "<group>"; };
 		EB4C75E32AC7B72F00AA575B /* bagChalUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = bagChalUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		EB4C75E72AC7B72F00AA575B /* bagChalUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = bagChalUITests.swift; sourceTree = "<group>"; };
-		EB4C75E92AC7B72F00AA575B /* bagChalUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = bagChalUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		EB7CBEEE2B1B366D009CF97C /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		EBABCC272B2DBAB10089DB60 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		EBB868A02B14BDCD00E001E9 /* GridDrawing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridDrawing.swift; sourceTree = "<group>"; };
 		EBB868A22B14BE9C00E001E9 /* IntersectionCircles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntersectionCircles.swift; sourceTree = "<group>"; };
 		EBB868A42B14BEBC00E001E9 /* TigerPiece.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TigerPiece.swift; sourceTree = "<group>"; };
 		EBB868A62B14CB1200E001E9 /* GoatPiece.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoatPiece.swift; sourceTree = "<group>"; };
 		EBB868A92B14CE3500E001E9 /* Engine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Engine.swift; sourceTree = "<group>"; };
 		EBB868AB2B14D3A000E001E9 /* BaghChalGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaghChalGame.swift; sourceTree = "<group>"; };
+		EBBAE8F02B2D7DC4005891A8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../GoogleService-Info.plist"; sourceTree = "<group>"; };
 		EBCB1FD52B1CA36A00402915 /* GameStatusHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameStatusHeaderView.swift; sourceTree = "<group>"; };
 		EBD08E452B13098D00133B38 /* BaghChalBoard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaghChalBoard.swift; sourceTree = "<group>"; };
-		F2053C53DF6ECBC0F467C7CD /* Pods-bagChal-bagChalUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bagChal-bagChalUITests.release.xcconfig"; path = "Target Support Files/Pods-bagChal-bagChalUITests/Pods-bagChal-bagChalUITests.release.xcconfig"; sourceTree = "<group>"; };
 		FC6F3B4CA72E150C56D53BAD /* Pods-bagChal.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bagChal.release.xcconfig"; path = "Target Support Files/Pods-bagChal/Pods-bagChal.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -95,15 +81,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EB0F68BF2ACAEB0C00FE4D24 /* FirebaseDatabaseSwift in Frameworks */,
+				EBABCC242B2DAE150089DB60 /* FirebaseDatabaseSwift in Frameworks */,
+				EBABCC222B2DAE150089DB60 /* FirebaseDatabase in Frameworks */,
 				132ABC55174FAC3FDE0A2657 /* Pods_bagChal.framework in Frameworks */,
-				EB0F68C72ACAEB0C00FE4D24 /* FirebaseStorage in Frameworks */,
-				EB0F68BB2ACAEB0C00FE4D24 /* FirebaseAuthCombine-Community in Frameworks */,
-				EB0F68BD2ACAEB0C00FE4D24 /* FirebaseDatabase in Frameworks */,
-				EB0F68B92ACAEB0C00FE4D24 /* FirebaseAuth in Frameworks */,
-				EB0F68C12ACAEB0C00FE4D24 /* FirebaseFirestore in Frameworks */,
-				EB0F68C32ACAEB0C00FE4D24 /* FirebaseFirestoreCombine-Community in Frameworks */,
-				EB0F68C52ACAEB0C00FE4D24 /* FirebaseFirestoreSwift in Frameworks */,
+				EBABCC262B2DAE150089DB60 /* FirebaseFirestore in Frameworks */,
+				EBABCC202B2DAE150089DB60 /* FirebaseAuth in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -111,7 +93,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F36E6EEF034B042408BE9EC1 /* Pods_bagChalTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -119,7 +100,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				830FC6C0E6C851E51044DFC6 /* Pods_bagChal_bagChalUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -131,10 +111,6 @@
 			children = (
 				5DAA199DB6861D2E305BD387 /* Pods-bagChal.debug.xcconfig */,
 				FC6F3B4CA72E150C56D53BAD /* Pods-bagChal.release.xcconfig */,
-				946B10D638259E72AE358CA5 /* Pods-bagChal-bagChalUITests.debug.xcconfig */,
-				F2053C53DF6ECBC0F467C7CD /* Pods-bagChal-bagChalUITests.release.xcconfig */,
-				50661D44043C69D4EBBE1BB2 /* Pods-bagChalTests.debug.xcconfig */,
-				0DC7DD47837AFC27CA63C952 /* Pods-bagChalTests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -143,8 +119,6 @@
 			isa = PBXGroup;
 			children = (
 				4E23F2DC2DD693A1EB3F8F91 /* Pods_bagChal.framework */,
-				6A6ECA10C03C979A87CEB21D /* Pods_bagChal_bagChalUITests.framework */,
-				BB0E2DCE19BD61C83E044C06 /* Pods_bagChalTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -152,8 +126,8 @@
 		EB0F68A92AC99A1100FE4D24 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				EB0F68AA2AC99A4200FE4D24 /* LoginRegisterSegmentVIew.swift */,
-				EB0F68AE2AC9ABDF00FE4D24 /* LoginView.swift */,
+				EB0F68AA2AC99A4200FE4D24 /* LoginVIew.swift */,
+				EB0F68AE2AC9ABDF00FE4D24 /* LoginRegisterChoiceView.swift */,
 				EB0F68B42ACAE2CF00FE4D24 /* RegisterView.swift */,
 				EBD08E452B13098D00133B38 /* BaghChalBoard.swift */,
 				EBB868A02B14BDCD00E001E9 /* GridDrawing.swift */,
@@ -161,6 +135,7 @@
 				EBB868A42B14BEBC00E001E9 /* TigerPiece.swift */,
 				EBB868A62B14CB1200E001E9 /* GoatPiece.swift */,
 				EBCB1FD52B1CA36A00402915 /* GameStatusHeaderView.swift */,
+				EBABCC272B2DBAB10089DB60 /* HomeView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -169,8 +144,6 @@
 			isa = PBXGroup;
 			children = (
 				EB4C75CB2AC7B72B00AA575B /* bagChal */,
-				EB4C75DC2AC7B72F00AA575B /* bagChalTests */,
-				EB4C75E62AC7B72F00AA575B /* bagChalUITests */,
 				EB4C75CA2AC7B72B00AA575B /* Products */,
 				46A5232768463DE6C6B84C0D /* Pods */,
 				C88296A5BF5069F50212E32B /* Frameworks */,
@@ -190,11 +163,12 @@
 		EB4C75CB2AC7B72B00AA575B /* bagChal */ = {
 			isa = PBXGroup;
 			children = (
-				EBB868A82B14CE1B00E001E9 /* Game Engine */,
 				EB4C75CC2AC7B72B00AA575B /* bagChalApp.swift */,
+				EBB868A82B14CE1B00E001E9 /* Game Engine */,
 				EB4C75CE2AC7B72B00AA575B /* ContentView.swift */,
 				EB0F68A92AC99A1100FE4D24 /* View */,
 				EB4C75D02AC7B72F00AA575B /* Assets.xcassets */,
+				EBBAE8F02B2D7DC4005891A8 /* GoogleService-Info.plist */,
 				EB4C75D22AC7B72F00AA575B /* Preview Content */,
 			);
 			path = bagChal;
@@ -206,23 +180,6 @@
 				EB4C75D32AC7B72F00AA575B /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
-			sourceTree = "<group>";
-		};
-		EB4C75DC2AC7B72F00AA575B /* bagChalTests */ = {
-			isa = PBXGroup;
-			children = (
-				EB4C75DD2AC7B72F00AA575B /* bagChalTests.swift */,
-			);
-			path = bagChalTests;
-			sourceTree = "<group>";
-		};
-		EB4C75E62AC7B72F00AA575B /* bagChalUITests */ = {
-			isa = PBXGroup;
-			children = (
-				EB4C75E72AC7B72F00AA575B /* bagChalUITests.swift */,
-				EB4C75E92AC7B72F00AA575B /* bagChalUITestsLaunchTests.swift */,
-			);
-			path = bagChalUITests;
 			sourceTree = "<group>";
 		};
 		EBB868A82B14CE1B00E001E9 /* Game Engine */ = {
@@ -253,14 +210,10 @@
 			);
 			name = bagChal;
 			packageProductDependencies = (
-				EB0F68B82ACAEB0C00FE4D24 /* FirebaseAuth */,
-				EB0F68BA2ACAEB0C00FE4D24 /* FirebaseAuthCombine-Community */,
-				EB0F68BC2ACAEB0C00FE4D24 /* FirebaseDatabase */,
-				EB0F68BE2ACAEB0C00FE4D24 /* FirebaseDatabaseSwift */,
-				EB0F68C02ACAEB0C00FE4D24 /* FirebaseFirestore */,
-				EB0F68C22ACAEB0C00FE4D24 /* FirebaseFirestoreCombine-Community */,
-				EB0F68C42ACAEB0C00FE4D24 /* FirebaseFirestoreSwift */,
-				EB0F68C62ACAEB0C00FE4D24 /* FirebaseStorage */,
+				EBABCC1F2B2DAE150089DB60 /* FirebaseAuth */,
+				EBABCC212B2DAE150089DB60 /* FirebaseDatabase */,
+				EBABCC232B2DAE150089DB60 /* FirebaseDatabaseSwift */,
+				EBABCC252B2DAE150089DB60 /* FirebaseFirestore */,
 			);
 			productName = bagChal;
 			productReference = EB4C75C92AC7B72B00AA575B /* bagChal.app */;
@@ -270,7 +223,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = EB4C75F02AC7B72F00AA575B /* Build configuration list for PBXNativeTarget "bagChalTests" */;
 			buildPhases = (
-				DB5FFBB499EC4647AA727722 /* [CP] Check Pods Manifest.lock */,
 				EB4C75D52AC7B72F00AA575B /* Sources */,
 				EB4C75D62AC7B72F00AA575B /* Frameworks */,
 				EB4C75D72AC7B72F00AA575B /* Resources */,
@@ -289,7 +241,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = EB4C75F32AC7B72F00AA575B /* Build configuration list for PBXNativeTarget "bagChalUITests" */;
 			buildPhases = (
-				42069B6F714941709DDE0107 /* [CP] Check Pods Manifest.lock */,
 				EB4C75DF2AC7B72F00AA575B /* Sources */,
 				EB4C75E02AC7B72F00AA575B /* Frameworks */,
 				EB4C75E12AC7B72F00AA575B /* Resources */,
@@ -337,7 +288,7 @@
 			);
 			mainGroup = EB4C75C02AC7B72B00AA575B;
 			packageReferences = (
-				EB0F68B72ACAEB0C00FE4D24 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				EBABCC1E2B2DAE150089DB60 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = EB4C75CA2AC7B72B00AA575B /* Products */;
 			projectDirPath = "";
@@ -357,6 +308,7 @@
 			files = (
 				EB4C75D42AC7B72F00AA575B /* Preview Assets.xcassets in Resources */,
 				EB4C75D12AC7B72F00AA575B /* Assets.xcassets in Resources */,
+				EBBAE8F12B2D7DC4005891A8 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -399,50 +351,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		42069B6F714941709DDE0107 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-bagChal-bagChalUITests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		DB5FFBB499EC4647AA727722 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-bagChalTests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -453,13 +361,14 @@
 				EBB868A32B14BE9C00E001E9 /* IntersectionCircles.swift in Sources */,
 				EB4C75CF2AC7B72B00AA575B /* ContentView.swift in Sources */,
 				EBD08E462B13098E00133B38 /* BaghChalBoard.swift in Sources */,
+				EBABCC282B2DBAB10089DB60 /* HomeView.swift in Sources */,
 				EBCB1FD62B1CA36A00402915 /* GameStatusHeaderView.swift in Sources */,
 				EB0F68B52ACAE2CF00FE4D24 /* RegisterView.swift in Sources */,
 				EBB868A52B14BEBC00E001E9 /* TigerPiece.swift in Sources */,
 				EBB868AC2B14D3A000E001E9 /* BaghChalGame.swift in Sources */,
-				EB0F68AB2AC99A4200FE4D24 /* LoginRegisterSegmentVIew.swift in Sources */,
+				EB0F68AB2AC99A4200FE4D24 /* LoginVIew.swift in Sources */,
 				EB7CBEEF2B1B366D009CF97C /* Constants.swift in Sources */,
-				EB0F68AF2AC9ABDF00FE4D24 /* LoginView.swift in Sources */,
+				EB0F68AF2AC9ABDF00FE4D24 /* LoginRegisterChoiceView.swift in Sources */,
 				EBB868A72B14CB1200E001E9 /* GoatPiece.swift in Sources */,
 				EBB868AA2B14CE3500E001E9 /* Engine.swift in Sources */,
 				EB4C75CD2AC7B72B00AA575B /* bagChalApp.swift in Sources */,
@@ -471,7 +380,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EB4C75DE2AC7B72F00AA575B /* bagChalTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -479,8 +387,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EB4C75E82AC7B72F00AA575B /* bagChalUITests.swift in Sources */,
-				EB4C75EA2AC7B72F00AA575B /* bagChalUITestsLaunchTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -676,7 +582,6 @@
 		};
 		EB4C75F12AC7B72F00AA575B /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 50661D44043C69D4EBBE1BB2 /* Pods-bagChalTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -697,7 +602,6 @@
 		};
 		EB4C75F22AC7B72F00AA575B /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0DC7DD47837AFC27CA63C952 /* Pods-bagChalTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -718,7 +622,6 @@
 		};
 		EB4C75F42AC7B72F00AA575B /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 946B10D638259E72AE358CA5 /* Pods-bagChal-bagChalUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -737,7 +640,6 @@
 		};
 		EB4C75F52AC7B72F00AA575B /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F2053C53DF6ECBC0F467C7CD /* Pods-bagChal-bagChalUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -796,9 +698,9 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		EB0F68B72ACAEB0C00FE4D24 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+		EBABCC1E2B2DAE150089DB60 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 9.0.0;
@@ -807,45 +709,25 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		EB0F68B82ACAEB0C00FE4D24 /* FirebaseAuth */ = {
+		EBABCC1F2B2DAE150089DB60 /* FirebaseAuth */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = EB0F68B72ACAEB0C00FE4D24 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			package = EBABCC1E2B2DAE150089DB60 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseAuth;
 		};
-		EB0F68BA2ACAEB0C00FE4D24 /* FirebaseAuthCombine-Community */ = {
+		EBABCC212B2DAE150089DB60 /* FirebaseDatabase */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = EB0F68B72ACAEB0C00FE4D24 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = "FirebaseAuthCombine-Community";
-		};
-		EB0F68BC2ACAEB0C00FE4D24 /* FirebaseDatabase */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = EB0F68B72ACAEB0C00FE4D24 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			package = EBABCC1E2B2DAE150089DB60 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseDatabase;
 		};
-		EB0F68BE2ACAEB0C00FE4D24 /* FirebaseDatabaseSwift */ = {
+		EBABCC232B2DAE150089DB60 /* FirebaseDatabaseSwift */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = EB0F68B72ACAEB0C00FE4D24 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			package = EBABCC1E2B2DAE150089DB60 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseDatabaseSwift;
 		};
-		EB0F68C02ACAEB0C00FE4D24 /* FirebaseFirestore */ = {
+		EBABCC252B2DAE150089DB60 /* FirebaseFirestore */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = EB0F68B72ACAEB0C00FE4D24 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			package = EBABCC1E2B2DAE150089DB60 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseFirestore;
-		};
-		EB0F68C22ACAEB0C00FE4D24 /* FirebaseFirestoreCombine-Community */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = EB0F68B72ACAEB0C00FE4D24 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = "FirebaseFirestoreCombine-Community";
-		};
-		EB0F68C42ACAEB0C00FE4D24 /* FirebaseFirestoreSwift */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = EB0F68B72ACAEB0C00FE4D24 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseFirestoreSwift;
-		};
-		EB0F68C62ACAEB0C00FE4D24 /* FirebaseStorage */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = EB0F68B72ACAEB0C00FE4D24 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseStorage;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

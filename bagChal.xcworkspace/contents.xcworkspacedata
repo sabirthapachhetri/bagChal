@@ -5,7 +5,7 @@
       location = "group:bagChal.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:Pods/../GoogleService-Info.plist">
+      location = "group:bagChal/../GoogleService-Info.plist">
    </FileRef>
    <FileRef
       location = "group:Pods/Pods.xcodeproj">

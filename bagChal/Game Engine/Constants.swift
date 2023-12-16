@@ -18,6 +18,11 @@ struct Point: Hashable {
 struct Move {
     var from: Point
     var to: Point
+    
+    static func defaultMove() -> Move {
+        // Define what a default move would be
+        return Move(from: Point(x: 0, y: 0), to: Point(x: 0, y: 0))
+    }
 }
 
 // Now, use Point as the key for the dictionary.

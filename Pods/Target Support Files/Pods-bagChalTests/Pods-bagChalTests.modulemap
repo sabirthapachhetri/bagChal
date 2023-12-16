@@ -1,6 +1,0 @@
-framework module Pods_bagChalTests {
-  umbrella header "Pods-bagChalTests-umbrella.h"
-
-  export *
-  module * { export * }
-}

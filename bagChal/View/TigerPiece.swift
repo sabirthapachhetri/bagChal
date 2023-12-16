@@ -63,3 +63,53 @@ struct TigerPiece: View {
         }
     }
 }
+
+
+////
+////  TigerPiece.swift
+////  bagChal
+////
+////  Created by Sabir Thapa on 27/11/2023.
+////
+//
+//import SwiftUI
+//
+//struct TigerPiece: View {
+//    let rows: Int
+//    let columns: Int
+//    let spacing: CGFloat
+//    let diameter: CGFloat
+//
+//    @Binding var goatPositions: [CGPoint]
+//    @Binding var tigerPositions: [CGPoint]
+//    @ObservedObject var game: BaghChalGame
+//
+//    var body: some View {
+//        ForEach(0..<tigerPositions.count, id: \.self) { index in
+//            Image("tiger")
+//                .resizable()
+//                .frame(width: diameter, height: diameter)
+//                .position(tigerPositions[index])
+//        }
+//        .onChange(of: game.nextTurn) { newTurn in
+//            if newTurn == "B" {
+//                performAITigerMove()
+//            }
+//        }
+//    }
+//
+//    private func performAITigerMove() {
+//        // AI logic to determine the best move for tigers
+//        if let bestMove = game.bestMoveForTigers() {
+//            // Perform the move
+//            game.applyMove(bestMove)
+//
+//            // Update tiger positions on the board
+//            tigerPositions = game.tigerPositions
+//
+//            // Update game state and switch turns
+//            game.updateGameState()
+//            game.nextTurn = "G" // Change turn to goats
+//        }
+//    }
+//}

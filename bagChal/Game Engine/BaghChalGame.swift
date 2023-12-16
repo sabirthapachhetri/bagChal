@@ -25,14 +25,17 @@ class BaghChalGame: ObservableObject {
     let columns: Int // Set as needed
     let spacing: CGFloat // Set as needed
     let diameter: CGFloat // Set as needed
+    
+    var engine: Engine
 
-    init(spacing: CGFloat, rows: Int, columns: Int, diameter: CGFloat, connectedPointsDict: [Point: Set<Point>]) {
-        
+    init(spacing: CGFloat, rows: Int, columns: Int, diameter: CGFloat, connectedPointsDict: [Point: Set<Point>], engine: Engine = Engine()) {
+
         self.spacing = spacing
         self.rows = rows
         self.columns = columns
         self.diameter = diameter
         self.connectedPointsDict = connectedPointsDict
+        self.engine = engine
 
         // Initialize tiger positions
         self.tigerPositions = [
@@ -185,9 +188,7 @@ extension BaghChalGame {
         // Reset the trappedTigers set
         trappedTigers.removeAll()
     }
-}
-
-extension BaghChalGame {
+    
     func canTigerCapture(from currentPos: CGPoint, to newPos: CGPoint) -> Bool {
         // Convert CGPoints to grid Points
         let currentGridPoint = convertToGridPoint(currentPos)
@@ -226,5 +227,248 @@ extension BaghChalGame {
 
         // Update game state after capture
         updateGameState()
+    }
+    
+    func winner() -> String {
+        if baghsTrapped == 4 { // Assuming there are 4 tigers and all being trapped means goats win
+            return "G" // Goats win
+        } else if goatsCaptured >= 5 { // Assuming capturing 5 goats means tigers win
+            return "B" // Tigers win
+        } else {
+            return "" // No winner yet
+        }
+    }
+    
+    func simulateMove(_ move: Move) -> BaghChalGame {
+        let simulatedGame = BaghChalGame(spacing: spacing, rows: rows, columns: columns, diameter: diameter, connectedPointsDict: connectedPointsDict)
+
+        // Copy current game state
+        simulatedGame.tigerPositions = self.tigerPositions
+        simulatedGame.goatPositions = self.goatPositions
+        simulatedGame.goatsPlaced = self.goatsPlaced
+        simulatedGame.nextTurn = self.nextTurn
+        simulatedGame.trappedTigers = self.trappedTigers
+
+        // Apply the move
+        let currentPosition = simulatedGame.convertToCGPoint(move.from)
+        let newPosition = simulatedGame.convertToCGPoint(move.to)
+        
+        if nextTurn == "G" {
+            // Handling goat move
+            if simulatedGame.goatsPlaced < 20 {
+                // Placing a new goat
+                simulatedGame.goatPositions.append(newPosition)
+                simulatedGame.goatsPlaced += 1
+            } else {
+                // Moving an existing goat
+                if let index = simulatedGame.goatPositions.firstIndex(of: currentPosition) {
+                    simulatedGame.goatPositions[index] = newPosition
+                }
+            }
+        } else if nextTurn == "B" {
+            // Handling tiger move
+            if let index = simulatedGame.tigerPositions.firstIndex(of: currentPosition) {
+                simulatedGame.tigerPositions[index] = newPosition
+                // Check for capture
+                if simulatedGame.canTigerCapture(from: currentPosition, to: newPosition) {
+                    simulatedGame.performTigerCapture(from: currentPosition, to: newPosition)
+                }
+            }
+        }
+
+        // Update the game state after applying the move
+        simulatedGame.updateGameState()
+        return simulatedGame
+    }
+    
+    func possibleMoves() -> [Move] {
+        var moves: [Move] = []
+
+        if nextTurn == "G" {
+            // Goat's turn
+            if goatsPlaced < 20 {
+                // Placing goats
+                for x in 1...rows {
+                    for y in 1...columns {
+                        let point = Point(x: x, y: y)
+                        if isIntersectionFree(convertToCGPoint(point)) {
+                            moves.append(Move(from: point, to: point)) // Placing goats
+                        }
+                    }
+                }
+            } else {
+                // Moving goats
+                for position in goatPositions {
+                    let gridPoint = convertToGridPoint(position)
+                    addGoatMoves(from: gridPoint, to: &moves)
+                }
+            }
+        } else if nextTurn == "B" {
+            // Tiger's turn
+            for position in tigerPositions {
+                let gridPoint = convertToGridPoint(position)
+                addTigerMoves(from: gridPoint, to: &moves)
+            }
+        }
+
+        return moves
+    }
+
+    // Helper function to add moves for goats
+    func addGoatMoves(from gridPoint: Point, to moves: inout [Move]) {
+        if let connectedPoints = connectedPointsDict[gridPoint] {
+            for point in connectedPoints {
+                if isIntersectionFree(convertToCGPoint(point)) {
+                    moves.append(Move(from: gridPoint, to: point))
+                }
+            }
+        }
+    }
+
+    // Helper function to add moves for tigers
+    func addTigerMoves(from gridPoint: Point, to moves: inout [Move]) {
+        if let connectedPoints = connectedPointsDict[gridPoint] {
+            for point in connectedPoints {
+                let newPos = convertToCGPoint(point)
+                // Regular moves for tigers
+                if isIntersectionFree(newPos) {
+                    moves.append(Move(from: gridPoint, to: point))
+                }
+                // Capture moves for tigers
+                if canTigerCapture(from: convertToCGPoint(gridPoint), to: newPos) {
+                    moves.append(Move(from: gridPoint, to: point))
+                }
+            }
+        }
+    }
+    
+//    func bestMoveForTigers() -> Move? {
+//        // Ensure it's the tiger's turn before proceeding
+//        guard nextTurn == "B" else { return nil }
+//
+//        // Use the Engine to determine the best move
+//        return engine.bestMove(for: self)
+//    }
+    
+    func applyMove(_ move: Move) {
+ 
+        let currentPosition = self.convertToCGPoint(move.from)
+        let newPosition = self.convertToCGPoint(move.to)
+        
+        if nextTurn == "B" {
+            // Applying tiger move
+            if let index = self.tigerPositions.firstIndex(of: currentPosition) {
+                self.tigerPositions[index] = newPosition
+                if self.canTigerCapture(from: currentPosition, to: newPosition) {
+                    self.performTigerCapture(from: currentPosition, to: newPosition)
+                }
+            }
+        }
+
+        // Update the game state after applying the move
+        self.updateGameState()
+        self.nextTurn = "G" // Switch to goat's turn
+    }
+    
+    func applyGoatMove(_ move: Move) {
+        let currentPosition = self.convertToCGPoint(move.from)
+        let newPosition = self.convertToCGPoint(move.to)
+
+        if nextTurn == "G" {
+            // Applying goat move
+            if goatsPlaced < 20 {
+                // Placing a new goat
+                if isIntersectionFree(newPosition) {
+                    self.goatPositions.append(newPosition)
+                    self.goatsPlaced += 1
+                }
+            } else {
+                // Moving an existing goat
+                if let index = self.goatPositions.firstIndex(of: currentPosition) {
+                    if isValidGoatMove(from: currentPosition, to: newPosition) {
+                        self.goatPositions[index] = newPosition
+                    }
+                }
+            }
+        }
+
+        // Update the game state after applying the move
+        self.updateGameState()
+        self.nextTurn = "B" // Switch to tiger's turn
+    }
+    
+    func bestMoveForTigers() -> Move? {
+        // Ensure it's the tiger's turn before proceeding
+        guard nextTurn == "B" else { return nil }
+
+        var bestScore = -Double.infinity
+        var bestMove: Move?
+
+        for move in possibleMoves() {
+            let score = evaluateMoveForTigers(move)
+            if score > bestScore {
+                bestScore = score
+                bestMove = move
+            }
+        }
+
+        return bestMove
+    }
+
+    private func evaluateMoveForTigers(_ move: Move) -> Double {
+        // Implement your heuristic here. This could include factors like:
+        // - Capturing goats
+        // - Improving the positioning of tigers
+        // - Avoiding traps or blockages
+        // For now, let's return a random score as a placeholder.
+        let simulatedGame = simulateMove(move)
+         return engine.minimax(game: simulatedGame, depth: engine.depth, alpha: -engine.INF, beta: engine.INF, maximizingPlayer: true)
+//        return Double.random(in: 0..<100)
+    }
+    
+    func bestMoveForGoats() -> Move? {
+        // Ensure it's the goat's turn before proceeding
+        guard nextTurn == "G" else { return nil }
+
+        var bestScore = -Double.infinity
+        var bestMove: Move?
+
+        for move in possibleMoves() {
+            let score = evaluateMoveForGoats(move)
+            if score > bestScore {
+                bestScore = score
+                bestMove = move
+            }
+        }
+
+        return bestMove
+    }
+
+    private func evaluateMoveForGoats(_ move: Move) -> Double {
+        // Implement your heuristic here. This could include factors like:
+        // - Improving the position of goats
+        // - Blocking tigers
+        // - Ensuring goats are not easily captured
+        // For now, let's return a random score as a placeholder.
+//        return Double.random(in: 0..<100)
+        let simulatedGame = simulateMove(move)
+         return engine.minimax(game: simulatedGame, depth: engine.depth, alpha: -engine.INF, beta: engine.INF, maximizingPlayer: true)
+    }
+    
+    // In BaghChalGame.swift
+    func placeGoatAtNextAvailablePosition() {
+        for x in 1...rows {
+            for y in 1...columns {
+                let gridPoint = Point(x: x, y: y)
+                let potentialPosition = convertToCGPoint(gridPoint)
+                if isIntersectionFree(potentialPosition) {
+                    goatPositions.append(potentialPosition)
+                    goatsPlaced += 1
+                    updateGameState()
+                    nextTurn = "B" // Change turn to tigers
+                    return
+                }
+            }
+        }
     }
 }

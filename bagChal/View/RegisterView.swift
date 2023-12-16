@@ -5,95 +5,93 @@
 //  Created by Sabir Thapa on 02/10/2023.
 //
 
-//
-//  LoginView.swift
-//  bagChal
-//
-//  Created by Sabir Thapa on 01/10/2023.
-//
-
 import SwiftUI
+import Firebase
 
 struct RegisterView: View {
-    @State private var emailAddress: String = ""
+    
+    @Environment(\.presentationMode) var presentationMode
+    @State private var email: String = ""
     @State private var password: String = ""
-    @State private var isPasswordVisible: Bool = false
-    @State private var termsAccepted: Bool = false
+    @State private var confirmPassword: String = ""
+    @State private var showAlert = false
+    @State private var alertTitle = ""
+    @State private var alertMessage = ""
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 25) {
-            Text("Create Your Account")
-                .font(.title3)
-                .fontWeight(.bold)
-                .padding(.top, 15)
-
-            Text("Make sure to keep your account secure.")
-                .font(.subheadline)
-                .foregroundColor(.gray)
-                .padding(.top, -15)
+        VStack {
+            Image("registerPage")
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .frame(width: 450, height: 450)
             
-            Text("Email Address")
-                .font(.headline)
-                .padding(.top)
-            TextField("Enter your email", text: $emailAddress)
-                .autocapitalization(.none)
-                .keyboardType(.emailAddress)
-                .padding(10)
-                .background(RoundedRectangle(cornerRadius: 8).strokeBorder(Color.gray, lineWidth: 1))
-            
-            Text("Password")
-                .font(.headline)
             HStack {
-                if isPasswordVisible {
-                    TextField("Enter your password", text: $password)
-                        .padding(10)
+                Text("Create your account")
+                    .font(.title2)
+                    .fontWeight(.semibold)
+                Spacer()
+            }
+            .padding(.top)
+            .padding(.leading, 15)
+            .padding(.bottom, 45)
+
+            CustomTextField(imageName: "envelope", placeholderText: "Email ID", isSecureField: false, text: $email)
+                .padding(.bottom, 25)
+
+            CustomTextField(imageName: "lock", placeholderText: "Password", isSecureField: true, text: $password)
+                .padding(.bottom, 25)
+
+            CustomTextField(imageName: "lock", placeholderText: "Confirm your password", isSecureField: true, text: $confirmPassword)
+                .padding(.bottom, 35)
+
+            Button("Register", action: {
+                if password == confirmPassword {
+                    Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
+                        if let e = error {
+                            self.alertTitle = "Registration Failed"
+                            self.alertMessage = e.localizedDescription
+                            self.showAlert = true
+                        } else {
+                            self.alertTitle = "Registration Successful"
+                            self.alertMessage = "Use this to sign in."
+                            self.showAlert = true
+                        }
+                    }
                 } else {
-                    SecureField("Enter your password", text: $password)
-                        .padding(10)
+                    self.alertTitle = "Password Mismatch"
+                    self.alertMessage = "Your passwords do not match. Please try again."
+                    self.showAlert = true
                 }
+            })
+            .foregroundColor(.white)
+            .frame(maxWidth: .infinity)
+            .padding()
+            .background(Color.orange)
+            .cornerRadius(10)
 
-                Button(action: {
-                    isPasswordVisible.toggle()
-                }) {
-                    Image(systemName: isPasswordVisible ? "eye.slash.fill" : "eye.fill")
-                        .foregroundColor(.gray)
-                        .padding()
-                }
-            }
-            .background(RoundedRectangle(cornerRadius: 8).strokeBorder(Color.gray, lineWidth: 1))
-
-            HStack {
-                Toggle("", isOn: $termsAccepted)
-                    .fixedSize()
-                Text("I agree with the terms and conditions.")
-                    .font(.subheadline)
-                    .foregroundColor(.gray)
-            }
-
-            Button(action: {
-                // Handle login action
-            }) {
-                Text("Create Account")
-                    .frame(maxWidth: .infinity)
-                    .padding()
-                    .background(Color(red: 48/255, green: 68/255, blue: 158/255))
-                    .foregroundColor(.white)
-                    .cornerRadius(30)
-            }
-            .padding(.top, 90)
-            .padding(.bottom)
-            
-//            Spacer()
+            Spacer()
         }
         .padding()
-        .background(RoundedRectangle(cornerRadius: 8).strokeBorder(Color.gray, lineWidth: 1))
+        .background(Color(red: 241/255, green: 241/255, blue: 241/255).ignoresSafeArea(edges: .all))
+        .alert(isPresented: $showAlert) {
+            Alert(
+                title: Text(alertTitle),
+                message: Text(alertMessage),
+                dismissButton: .default(Text("OK")) {
+                    if alertTitle == "Registration Successful" {
+                        self.presentationMode.wrappedValue.dismiss()
+                    }
+                }
+            )
+        }
+        .navigationBarItems(trailing: Button("Cancel") {
+            self.presentationMode.wrappedValue.dismiss()
+        })
     }
 }
 
 struct RegisterView_Previews: PreviewProvider {
     static var previews: some View {
         RegisterView()
-            .previewLayout(.fixed(width: 450, height: 1200))
     }
 }
-
