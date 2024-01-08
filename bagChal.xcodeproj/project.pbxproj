@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		132ABC55174FAC3FDE0A2657 /* Pods_bagChal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E23F2DC2DD693A1EB3F8F91 /* Pods_bagChal.framework */; };
+		EB070AFA2B43D23A0052EAD9 /* GameLobbyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB070AF92B43D2390052EAD9 /* GameLobbyViewModel.swift */; };
+		EB070AFC2B43E4C80052EAD9 /* GameLobbyVIew.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB070AFB2B43E4C80052EAD9 /* GameLobbyVIew.swift */; };
 		EB0F68AB2AC99A4200FE4D24 /* LoginVIew.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB0F68AA2AC99A4200FE4D24 /* LoginVIew.swift */; };
 		EB0F68AF2AC9ABDF00FE4D24 /* LoginRegisterChoiceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB0F68AE2AC9ABDF00FE4D24 /* LoginRegisterChoiceView.swift */; };
 		EB0F68B52ACAE2CF00FE4D24 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB0F68B42ACAE2CF00FE4D24 /* RegisterView.swift */; };
@@ -16,11 +18,12 @@
 		EB4C75D12AC7B72F00AA575B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EB4C75D02AC7B72F00AA575B /* Assets.xcassets */; };
 		EB4C75D42AC7B72F00AA575B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EB4C75D32AC7B72F00AA575B /* Preview Assets.xcassets */; };
 		EB7CBEEF2B1B366D009CF97C /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB7CBEEE2B1B366D009CF97C /* Constants.swift */; };
+		EB979A2E2B2F2E44002318BA /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB979A2D2B2F2E44002318BA /* CardView.swift */; };
 		EBABCC202B2DAE150089DB60 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = EBABCC1F2B2DAE150089DB60 /* FirebaseAuth */; };
 		EBABCC222B2DAE150089DB60 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = EBABCC212B2DAE150089DB60 /* FirebaseDatabase */; };
 		EBABCC242B2DAE150089DB60 /* FirebaseDatabaseSwift in Frameworks */ = {isa = PBXBuildFile; productRef = EBABCC232B2DAE150089DB60 /* FirebaseDatabaseSwift */; };
 		EBABCC262B2DAE150089DB60 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = EBABCC252B2DAE150089DB60 /* FirebaseFirestore */; };
-		EBABCC282B2DBAB10089DB60 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBABCC272B2DBAB10089DB60 /* HomeView.swift */; };
+		EBABCC282B2DBAB10089DB60 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBABCC272B2DBAB10089DB60 /* OnboardingView.swift */; };
 		EBB868A12B14BDCD00E001E9 /* GridDrawing.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB868A02B14BDCD00E001E9 /* GridDrawing.swift */; };
 		EBB868A32B14BE9C00E001E9 /* IntersectionCircles.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB868A22B14BE9C00E001E9 /* IntersectionCircles.swift */; };
 		EBB868A52B14BEBC00E001E9 /* TigerPiece.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB868A42B14BEBC00E001E9 /* TigerPiece.swift */; };
@@ -30,6 +33,9 @@
 		EBBAE8F12B2D7DC4005891A8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = EBBAE8F02B2D7DC4005891A8 /* GoogleService-Info.plist */; };
 		EBCB1FD62B1CA36A00402915 /* GameStatusHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBCB1FD52B1CA36A00402915 /* GameStatusHeaderView.swift */; };
 		EBD08E462B13098E00133B38 /* BaghChalBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD08E452B13098D00133B38 /* BaghChalBoard.swift */; };
+		EBD0CAC02B36AA6A00921C19 /* GameModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD0CABF2B36AA6A00921C19 /* GameModel.swift */; };
+		EBD0CAC32B36AB0500921C19 /* GameData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD0CAC22B36AB0500921C19 /* GameData.swift */; };
+		EBD0CAC52B36B3B400921C19 /* StartButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD0CAC42B36B3B400921C19 /* StartButtonView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +58,8 @@
 /* Begin PBXFileReference section */
 		4E23F2DC2DD693A1EB3F8F91 /* Pods_bagChal.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_bagChal.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5DAA199DB6861D2E305BD387 /* Pods-bagChal.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bagChal.debug.xcconfig"; path = "Target Support Files/Pods-bagChal/Pods-bagChal.debug.xcconfig"; sourceTree = "<group>"; };
+		EB070AF92B43D2390052EAD9 /* GameLobbyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameLobbyViewModel.swift; sourceTree = "<group>"; };
+		EB070AFB2B43E4C80052EAD9 /* GameLobbyVIew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameLobbyVIew.swift; sourceTree = "<group>"; };
 		EB0F68AA2AC99A4200FE4D24 /* LoginVIew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVIew.swift; sourceTree = "<group>"; };
 		EB0F68AE2AC9ABDF00FE4D24 /* LoginRegisterChoiceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRegisterChoiceView.swift; sourceTree = "<group>"; };
 		EB0F68B42ACAE2CF00FE4D24 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
@@ -63,7 +71,8 @@
 		EB4C75D92AC7B72F00AA575B /* bagChalTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = bagChalTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB4C75E32AC7B72F00AA575B /* bagChalUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = bagChalUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB7CBEEE2B1B366D009CF97C /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		EBABCC272B2DBAB10089DB60 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		EB979A2D2B2F2E44002318BA /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
+		EBABCC272B2DBAB10089DB60 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		EBB868A02B14BDCD00E001E9 /* GridDrawing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridDrawing.swift; sourceTree = "<group>"; };
 		EBB868A22B14BE9C00E001E9 /* IntersectionCircles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntersectionCircles.swift; sourceTree = "<group>"; };
 		EBB868A42B14BEBC00E001E9 /* TigerPiece.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TigerPiece.swift; sourceTree = "<group>"; };
@@ -73,6 +82,9 @@
 		EBBAE8F02B2D7DC4005891A8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../GoogleService-Info.plist"; sourceTree = "<group>"; };
 		EBCB1FD52B1CA36A00402915 /* GameStatusHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameStatusHeaderView.swift; sourceTree = "<group>"; };
 		EBD08E452B13098D00133B38 /* BaghChalBoard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaghChalBoard.swift; sourceTree = "<group>"; };
+		EBD0CABF2B36AA6A00921C19 /* GameModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameModel.swift; sourceTree = "<group>"; };
+		EBD0CAC22B36AB0500921C19 /* GameData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameData.swift; sourceTree = "<group>"; };
+		EBD0CAC42B36B3B400921C19 /* StartButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartButtonView.swift; sourceTree = "<group>"; };
 		FC6F3B4CA72E150C56D53BAD /* Pods-bagChal.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bagChal.release.xcconfig"; path = "Target Support Files/Pods-bagChal/Pods-bagChal.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -135,7 +147,9 @@
 				EBB868A42B14BEBC00E001E9 /* TigerPiece.swift */,
 				EBB868A62B14CB1200E001E9 /* GoatPiece.swift */,
 				EBCB1FD52B1CA36A00402915 /* GameStatusHeaderView.swift */,
-				EBABCC272B2DBAB10089DB60 /* HomeView.swift */,
+				EBABCC272B2DBAB10089DB60 /* OnboardingView.swift */,
+				EBD0CAC42B36B3B400921C19 /* StartButtonView.swift */,
+				EB070AFB2B43E4C80052EAD9 /* GameLobbyVIew.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -164,9 +178,12 @@
 			isa = PBXGroup;
 			children = (
 				EB4C75CC2AC7B72B00AA575B /* bagChalApp.swift */,
-				EBB868A82B14CE1B00E001E9 /* Game Engine */,
 				EB4C75CE2AC7B72B00AA575B /* ContentView.swift */,
+				EB979A2C2B2F2E26002318BA /* Component */,
+				EBB868A82B14CE1B00E001E9 /* Game Engine */,
 				EB0F68A92AC99A1100FE4D24 /* View */,
+				EBD0CAC12B36AAD800921C19 /* GameData */,
+				EBD0CABE2B36AA5100921C19 /* Model */,
 				EB4C75D02AC7B72F00AA575B /* Assets.xcassets */,
 				EBBAE8F02B2D7DC4005891A8 /* GoogleService-Info.plist */,
 				EB4C75D22AC7B72F00AA575B /* Preview Content */,
@@ -182,14 +199,39 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		EB979A2C2B2F2E26002318BA /* Component */ = {
+			isa = PBXGroup;
+			children = (
+				EB979A2D2B2F2E44002318BA /* CardView.swift */,
+			);
+			path = Component;
+			sourceTree = "<group>";
+		};
 		EBB868A82B14CE1B00E001E9 /* Game Engine */ = {
 			isa = PBXGroup;
 			children = (
 				EBB868A92B14CE3500E001E9 /* Engine.swift */,
 				EBB868AB2B14D3A000E001E9 /* BaghChalGame.swift */,
 				EB7CBEEE2B1B366D009CF97C /* Constants.swift */,
+				EB070AF92B43D2390052EAD9 /* GameLobbyViewModel.swift */,
 			);
 			path = "Game Engine";
+			sourceTree = "<group>";
+		};
+		EBD0CABE2B36AA5100921C19 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				EBD0CABF2B36AA6A00921C19 /* GameModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		EBD0CAC12B36AAD800921C19 /* GameData */ = {
+			isa = PBXGroup;
+			children = (
+				EBD0CAC22B36AB0500921C19 /* GameData.swift */,
+			);
+			path = GameData;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -361,18 +403,24 @@
 				EBB868A32B14BE9C00E001E9 /* IntersectionCircles.swift in Sources */,
 				EB4C75CF2AC7B72B00AA575B /* ContentView.swift in Sources */,
 				EBD08E462B13098E00133B38 /* BaghChalBoard.swift in Sources */,
-				EBABCC282B2DBAB10089DB60 /* HomeView.swift in Sources */,
+				EBABCC282B2DBAB10089DB60 /* OnboardingView.swift in Sources */,
 				EBCB1FD62B1CA36A00402915 /* GameStatusHeaderView.swift in Sources */,
 				EB0F68B52ACAE2CF00FE4D24 /* RegisterView.swift in Sources */,
 				EBB868A52B14BEBC00E001E9 /* TigerPiece.swift in Sources */,
+				EBD0CAC32B36AB0500921C19 /* GameData.swift in Sources */,
+				EBD0CAC52B36B3B400921C19 /* StartButtonView.swift in Sources */,
+				EB070AFA2B43D23A0052EAD9 /* GameLobbyViewModel.swift in Sources */,
 				EBB868AC2B14D3A000E001E9 /* BaghChalGame.swift in Sources */,
 				EB0F68AB2AC99A4200FE4D24 /* LoginVIew.swift in Sources */,
 				EB7CBEEF2B1B366D009CF97C /* Constants.swift in Sources */,
 				EB0F68AF2AC9ABDF00FE4D24 /* LoginRegisterChoiceView.swift in Sources */,
 				EBB868A72B14CB1200E001E9 /* GoatPiece.swift in Sources */,
 				EBB868AA2B14CE3500E001E9 /* Engine.swift in Sources */,
+				EB070AFC2B43E4C80052EAD9 /* GameLobbyVIew.swift in Sources */,
 				EB4C75CD2AC7B72B00AA575B /* bagChalApp.swift in Sources */,
+				EB979A2E2B2F2E44002318BA /* CardView.swift in Sources */,
 				EBB868A12B14BDCD00E001E9 /* GridDrawing.swift in Sources */,
+				EBD0CAC02B36AA6A00921C19 /* GameModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

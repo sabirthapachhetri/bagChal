@@ -12,7 +12,7 @@ struct LoginRegisterChoiceView: View {
     @State private var showingRegister = false
 
     var body: some View {
-        NavigationView { // Add this
+        NavigationView {
             ZStack {
                 VStack {
                     Spacer()
@@ -69,7 +69,8 @@ struct LoginRegisterChoiceView: View {
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .background(Color(red: 249/255, green: 244/255, blue: 236/255, opacity: 1))
-        } // End NavigationView
+        }
+        .accentColor(Color.orange)
     }
 }
 
