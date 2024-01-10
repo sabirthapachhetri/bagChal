@@ -8,14 +8,23 @@
 import SwiftUI
 
 struct BaghChalBoard: View {
-    // Constants for the layout and size of the board
+    let userRole: PlayerRole?
+    let playAgainstAI: Bool // Add this
     let columns = 5
     let rows = 5
     let spacing: CGFloat = 80
     let lineWidth: CGFloat = 2
     let intersectionCircleDiameter: CGFloat = 40
 
-    let connectedPoints = connectedPointsDict // Assuming this is initialized somewhere
+    let connectedPoints = connectedPointsDict
+    
+    var isAIGoat: Bool {
+        playAgainstAI && userRole == .tiger
+    }
+
+    var isAITiger: Bool {
+        playAgainstAI && userRole == .goat
+    }
 
     @StateObject private var game = BaghChalGame(spacing: 80, rows: 5, columns: 5, diameter: 40, connectedPointsDict: connectedPointsDict)
     @State private var showAlert = false
@@ -29,9 +38,9 @@ struct BaghChalBoard: View {
 
                 IntersectionCircles(rows: rows, columns: columns, spacing: spacing, diameter: intersectionCircleDiameter, connectedPointsDict: connectedPoints)
 
-                TigerPiece(rows: rows, columns: columns, spacing: spacing, diameter: intersectionCircleDiameter, goatPositions: $game.goatPositions, tigerPositions: $game.tigerPositions, game: game)
+                TigerPiece(rows: rows, columns: columns, spacing: spacing, diameter: intersectionCircleDiameter, goatPositions: $game.goatPositions, tigerPositions: $game.tigerPositions, game: game, isAITiger: isAITiger)
 
-                GoatPiece(rows: rows, columns: columns, spacing: spacing, diameter: intersectionCircleDiameter, goatPositions: $game.goatPositions, tigerPositions: $game.tigerPositions, game: game)
+                GoatPiece(rows: rows, columns: columns, spacing: spacing, diameter: intersectionCircleDiameter, goatPositions: $game.goatPositions, tigerPositions: $game.tigerPositions, game: game, isAIGoat: isAIGoat)
             }
             .frame(width: spacing * CGFloat(columns - 1), height: spacing * CGFloat(rows - 1))
             .padding(spacing)
@@ -67,11 +76,5 @@ struct BaghChalBoard: View {
                 showAlert = true
             }
         }
-    }
-}
-
-struct BagChalBoard_Previews: PreviewProvider {
-    static var previews: some View {
-        BaghChalBoard()
     }
 }

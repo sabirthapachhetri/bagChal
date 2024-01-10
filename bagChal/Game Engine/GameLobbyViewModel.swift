@@ -12,19 +12,21 @@ class GameLobbyViewModel: ObservableObject {
     @Published var availableGames: [GameSession] = []
     @Published var isLoading = false
     private var db = Firestore.firestore()
+    @Published var connectedGame: GameSession?
 
     init() {
         fetchAvailableGames()
     }
 
     func fetchAvailableGames() {
+        print("Current user ID: \(Auth.auth().currentUser?.uid ?? "No user signed in")")
         isLoading = true
         db.collection("games").whereField("isComplete", isEqualTo: false).getDocuments { [weak self] (querySnapshot, err) in
             DispatchQueue.main.async {
                 self?.isLoading = false
             }
             if let err = err {
-                print("Error getting documents: \(err)")
+                print("Error getting documents: \(err.localizedDescription)")
                 return
             }
             
@@ -73,7 +75,53 @@ class GameLobbyViewModel: ObservableObject {
     }
 }
 
-struct GameSession: Identifiable {
+extension GameLobbyViewModel {
+    func joinGame(_ game: GameSession, completion: @escaping (Bool) -> Void) {
+        guard let userId = Auth.auth().currentUser?.uid, userId != game.player1Id else {
+            print("User must be signed in and not the same as player 1 to join a game")
+            completion(false)
+            return
+        }
+
+        // Reference to the game session in Firestore
+        let gameRef = db.collection("games").document(game.gameId)
+
+        // Start a Firestore transaction to ensure atomicity
+        db.runTransaction({ (transaction, errorPointer) -> Any? in
+            let gameDocument: DocumentSnapshot
+            do {
+                try gameDocument = transaction.getDocument(gameRef)
+            } catch let fetchError as NSError {
+                errorPointer?.pointee = fetchError
+                return nil
+            }
+            
+            // Check if there's already a player 2
+            if let player2Id = gameDocument.data()?["player2Id"] as? String, !player2Id.isEmpty {
+                print("The game is already full.")
+                return nil
+            }
+
+            // Set the current user as player 2
+            transaction.updateData(["player2Id": userId], forDocument: gameRef)
+            return nil
+        }) { [weak self] (object, error) in
+            if let error = error {
+                print("Transaction failed: \(error)")
+                completion(false)
+            } else {
+                print("User joined the game")
+                DispatchQueue.main.async {
+                    self?.connectedGame = game // Set the connected game
+                }
+                completion(true)
+            }
+        }
+    }
+}
+
+
+struct GameSession: Identifiable, Equatable {
     var id: String { gameId } // This provides a unique identifier for each session
     var gameId: String
     var player1Id: String
