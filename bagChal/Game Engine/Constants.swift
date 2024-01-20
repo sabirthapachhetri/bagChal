@@ -7,8 +7,6 @@
 
 import Foundation
 
-import Foundation
-
 // Define a struct to represent a point that conforms to Hashable.
 struct Point: Hashable {
     let x: Int

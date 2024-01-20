@@ -53,6 +53,9 @@ struct LoginView: View {
             NavigationLink(destination: OnboardingView(), isActive: $isSignedIn) {
                 EmptyView()
             }
+//            NavigationLink(destination: MessageView(), isActive: $isSignedIn) {
+//                EmptyView()
+//            }
             .accentColor(Color.orange)
 
             Spacer()

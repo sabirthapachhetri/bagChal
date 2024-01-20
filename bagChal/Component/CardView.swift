@@ -12,7 +12,7 @@ struct CardView: View {
     // MARK: - PROPERTIES
     @State private var isAnimating: Bool = false
     var gameData: GameModel
-    var onButtonPress: () -> Void  // Closure for button action
+    var onButtonPress: () -> Void 
 
     // MARK: - BODY
     var body: some View {

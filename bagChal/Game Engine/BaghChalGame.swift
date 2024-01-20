@@ -12,42 +12,44 @@ class BaghChalGame: ObservableObject {
     @Published var baghsTrapped: Int = 0
     @Published var goatsCaptured: Int = 0
     @Published var nextTurn: String = "G" // or "B"
-    @Published var goatsPlaced: Int = 0 // Number of goats placed on the board
+    @Published var goatsPlaced: Int = 0
     @Published var tigerPositions: [CGPoint]
     @Published var goatPositions: [CGPoint]
     @Published var isGameOver: Bool = false
     @Published var winningSide: String = ""
     
     var connectedPointsDict: [Point: Set<Point>]
-    var trappedTigers: Set<Int> = [] // Tracks indices of trapped tigers
+    var baghSpecialCaptureMovesDict: [Point: Set<Point>]
+    var trappedTigers: Set<Int> = []
 
-    let rows: Int // Set as needed
-    let columns: Int // Set as needed
-    let spacing: CGFloat // Set as needed
-    let diameter: CGFloat // Set as needed
+    let rows: Int
+    let columns: Int
+    let spacing: CGFloat
+    let diameter: CGFloat
     
     var engine: Engine
 
-    init(spacing: CGFloat, rows: Int, columns: Int, diameter: CGFloat, connectedPointsDict: [Point: Set<Point>], engine: Engine = Engine()) {
+    init(spacing: CGFloat, rows: Int, columns: Int, diameter: CGFloat, connectedPointsDict: [Point: Set<Point>], baghSpecialCaptureMovesDict: [Point: Set<Point>], engine: Engine = Engine()) {
 
         self.spacing = spacing
         self.rows = rows
         self.columns = columns
         self.diameter = diameter
         self.connectedPointsDict = connectedPointsDict
+        self.baghSpecialCaptureMovesDict = baghSpecialCaptureMovesDict
         self.engine = engine
 
         // Initialize tiger positions
         self.tigerPositions = [
-            CGPoint(x: 0 * spacing, y: 0 * spacing),       // Top-left
-            CGPoint(x: 4 * spacing, y: 0 * spacing),       //  Top-right
-            CGPoint(x: 4 * spacing, y: 4 * spacing),       // Bottom-right
-            CGPoint(x: 0 * spacing, y: 4 * spacing)        // Bottom-left
+            CGPoint(x: 0 * spacing, y: 0 * spacing),
+            CGPoint(x: 4 * spacing, y: 0 * spacing),
+            CGPoint(x: 4 * spacing, y: 4 * spacing),
+            CGPoint(x: 0 * spacing, y: 4 * spacing)
         ]
 
         // Initialize goat positions in an overlay style
-        let basePosition = CGPoint(x:160, y: 5 * spacing) // Base position for the first goat
-        let overlayOffset = CGPoint(x: 0, y: 0) // Define the offset for overlaying goats
+        let basePosition = CGPoint(x:160, y: 5 * spacing)
+        let overlayOffset = CGPoint(x: 0, y: 0)
 
         self.goatPositions = (0..<20).map { index in
             // Calculate the offset for each goat based on its index
@@ -60,16 +62,17 @@ class BaghChalGame: ObservableObject {
     }
 
     func convertToGridPoint(_ point: CGPoint) -> Point {
-        let x = Int(round(point.x / spacing)) + 1  // Adjust for 1-indexing
-        let y = Int(round(point.y / spacing)) + 1  // Adjust for 1-indexing
-        return Point(x: x, y: y)
+        let x = Int(round(point.x / spacing))
+        let y = Int(round(point.y / spacing))
+        return Point(x: x + 1, y: y + 1) // Assuming (0, 0) in CGPoint is (1, 1) in grid
     }
 
     func convertToCGPoint(_ point: Point) -> CGPoint {
-        let x = CGFloat(point.x - 1) * spacing  // Adjust for 1-indexing
-        let y = CGFloat(point.y - 1) * spacing  // Adjust for 1-indexing
+        let x = CGFloat(point.x - 1) * spacing
+        let y = CGFloat(point.y - 1) * spacing
         return CGPoint(x: x, y: y)
     }
+
     
     // Function to check if a point is within board boundaries
     func isPointWithinBoard(_ point: CGPoint) -> Bool {
@@ -188,21 +191,32 @@ extension BaghChalGame {
         // Reset the trappedTigers set
         trappedTigers.removeAll()
     }
-    
+
     func canTigerCapture(from currentPos: CGPoint, to newPos: CGPoint) -> Bool {
-        // Convert CGPoints to grid Points
         let currentGridPoint = convertToGridPoint(currentPos)
         let newGridPoint = convertToGridPoint(newPos)
 
-        // Calculate the mid-grid point
-        let midGridPoint = Point(x: (currentGridPoint.x + newGridPoint.x) / 2, y: (currentGridPoint.y + newGridPoint.y) / 2)
+        print("Checking capture from \(currentGridPoint) to \(newGridPoint)")
 
-        // Convert the mid-grid point back to CGPoint to check the goat's position
+        guard let specialCaptureMoves = baghSpecialCaptureMovesDict[currentGridPoint] else {
+            print("No special capture moves from this point")
+            return false
+        }
+
+        if !specialCaptureMoves.contains(newGridPoint) {
+            print("The move is not a special capture move")
+            return false
+        }
+
+        let midGridPoint = Point(x: (currentGridPoint.x + newGridPoint.x) / 2, y: (currentGridPoint.y + newGridPoint.y) / 2)
         let midPoint = convertToCGPoint(midGridPoint)
 
-        // Check if there's a goat at the mid-point and if the new position is free
-        return goatPositions.contains(midPoint) && isIntersectionFree(newPos) &&
-               baghSpecialCaptureMovesDict[currentGridPoint]?.contains(newGridPoint) == true
+        let isMidpointOccupiedByGoat = goatPositions.contains(midPoint)
+        let isNewPositionFree = isIntersectionFree(newPos)
+
+        print("Midpoint: \(midGridPoint), occupied by goat: \(isMidpointOccupiedByGoat), new position free: \(isNewPositionFree)")
+
+        return isMidpointOccupiedByGoat && isNewPositionFree
     }
 
     func performTigerCapture(from currentPos: CGPoint, to newPos: CGPoint) {
@@ -239,50 +253,49 @@ extension BaghChalGame {
         }
     }
     
-    func simulateMove(_ move: Move) -> BaghChalGame {
-        let simulatedGame = BaghChalGame(spacing: spacing, rows: rows, columns: columns, diameter: diameter, connectedPointsDict: connectedPointsDict)
+        func simulateMove(_ move: Move) -> BaghChalGame {
+            let simulatedGame = self.deepCopy()
 
-        // Copy current game state
-        simulatedGame.tigerPositions = self.tigerPositions
-        simulatedGame.goatPositions = self.goatPositions
-        simulatedGame.goatsPlaced = self.goatsPlaced
-        simulatedGame.nextTurn = self.nextTurn
-        simulatedGame.trappedTigers = self.trappedTigers
-
-        // Apply the move
-        let currentPosition = simulatedGame.convertToCGPoint(move.from)
-        let newPosition = simulatedGame.convertToCGPoint(move.to)
-        
-        if nextTurn == "G" {
-            // Handling goat move
-            if simulatedGame.goatsPlaced < 20 {
-                // Placing a new goat
-                simulatedGame.goatPositions.append(newPosition)
-                simulatedGame.goatsPlaced += 1
-            } else {
-                // Moving an existing goat
-                if let index = simulatedGame.goatPositions.firstIndex(of: currentPosition) {
-                    simulatedGame.goatPositions[index] = newPosition
+            // Apply the move
+            let currentPosition = simulatedGame.convertToCGPoint(move.from)
+            let newPosition = simulatedGame.convertToCGPoint(move.to)
+            
+            if simulatedGame.nextTurn == "G" {
+                // Handling goat move
+                if simulatedGame.goatsPlaced < 20 {
+                    // Placing a new goat
+                    simulatedGame.goatPositions.append(newPosition)
+                    simulatedGame.goatsPlaced += 1
+                } else {
+                    // Moving an existing goat
+                    if let index = simulatedGame.goatPositions.firstIndex(of: currentPosition) {
+                        simulatedGame.goatPositions[index] = newPosition
+                    }
+                }
+            } else if simulatedGame.nextTurn == "B" {
+                // Handling tiger move
+                if let index = simulatedGame.tigerPositions.firstIndex(of: currentPosition) {
+                    simulatedGame.tigerPositions[index] = newPosition
+                    // Check for and perform captures
+                    if simulatedGame.canTigerCapture(from: currentPosition, to: newPosition) {
+                        simulatedGame.performTigerCapture(from: currentPosition, to: newPosition)
+                    }
                 }
             }
-        } else if nextTurn == "B" {
-            // Handling tiger move
-            if let index = simulatedGame.tigerPositions.firstIndex(of: currentPosition) {
-                simulatedGame.tigerPositions[index] = newPosition
-                // Check for capture
-                if simulatedGame.canTigerCapture(from: currentPosition, to: newPosition) {
-                    simulatedGame.performTigerCapture(from: currentPosition, to: newPosition)
-                }
-            }
+
+            // Update the game state after applying the move
+            simulatedGame.updateGameState()
+
+            // Switch turn
+            simulatedGame.nextTurn = simulatedGame.nextTurn == "G" ? "B" : "G"
+            
+            return simulatedGame
         }
-
-        // Update the game state after applying the move
-        simulatedGame.updateGameState()
-        return simulatedGame
-    }
     
+
     func possibleMoves() -> [Move] {
         var moves: [Move] = []
+        var captureMoveFound = false
 
         if nextTurn == "G" {
             // Goat's turn
@@ -308,12 +321,47 @@ extension BaghChalGame {
             for position in tigerPositions {
                 let gridPoint = convertToGridPoint(position)
                 addTigerMoves(from: gridPoint, to: &moves)
+                // Check if a capture move has been added, if so, break the loop
+                if moves.contains(where: { canTigerCapture(from: convertToCGPoint($0.from), to: convertToCGPoint($0.to)) }) {
+                    captureMoveFound = true
+                    break
+                }
             }
+        }
+
+        // If a capture move has been found, filter the moves to only keep capture moves
+        if captureMoveFound {
+            moves = moves.filter { canTigerCapture(from: convertToCGPoint($0.from), to: convertToCGPoint($0.to)) }
         }
 
         return moves
     }
 
+
+    func addTigerMoves(from gridPoint: Point, to moves: inout [Move]) {
+        // First, check for special capture moves and prioritize them
+        if let specialCaptureMoves = baghSpecialCaptureMovesDict[gridPoint] {
+            for point in specialCaptureMoves {
+                let newPos = convertToCGPoint(point)
+                // If a capture is possible, add the move and return immediately to prioritize it
+                if canTigerCapture(from: convertToCGPoint(gridPoint), to: newPos) {
+                    moves.append(Move(from: gridPoint, to: point))
+                    return // Capture move found, no need to check for regular moves
+                }
+            }
+        }
+
+        // If no capture moves are found, then add regular moves
+        if let connectedPoints = connectedPointsDict[gridPoint] {
+            for point in connectedPoints {
+                let newPos = convertToCGPoint(point)
+                if isIntersectionFree(newPos) {
+                    moves.append(Move(from: gridPoint, to: point))
+                }
+            }
+        }
+    }
+    
     // Helper function to add moves for goats
     func addGoatMoves(from gridPoint: Point, to moves: inout [Move]) {
         if let connectedPoints = connectedPointsDict[gridPoint] {
@@ -324,39 +372,13 @@ extension BaghChalGame {
             }
         }
     }
-
-    // Helper function to add moves for tigers
-    func addTigerMoves(from gridPoint: Point, to moves: inout [Move]) {
-        if let connectedPoints = connectedPointsDict[gridPoint] {
-            for point in connectedPoints {
-                let newPos = convertToCGPoint(point)
-                // Regular moves for tigers
-                if isIntersectionFree(newPos) {
-                    moves.append(Move(from: gridPoint, to: point))
-                }
-                // Capture moves for tigers
-                if canTigerCapture(from: convertToCGPoint(gridPoint), to: newPos) {
-                    moves.append(Move(from: gridPoint, to: point))
-                }
-            }
-        }
-    }
     
-//    func bestMoveForTigers() -> Move? {
-//        // Ensure it's the tiger's turn before proceeding
-//        guard nextTurn == "B" else { return nil }
-//
-//        // Use the Engine to determine the best move
-//        return engine.bestMove(for: self)
-//    }
-    
-    func applyMove(_ move: Move) {
+    func applyTigerMove(_ move: Move) {
  
         let currentPosition = self.convertToCGPoint(move.from)
         let newPosition = self.convertToCGPoint(move.to)
         
         if nextTurn == "B" {
-            // Applying tiger move
             if let index = self.tigerPositions.firstIndex(of: currentPosition) {
                 self.tigerPositions[index] = newPosition
                 if self.canTigerCapture(from: currentPosition, to: newPosition) {
@@ -365,9 +387,8 @@ extension BaghChalGame {
             }
         }
 
-        // Update the game state after applying the move
         self.updateGameState()
-        self.nextTurn = "G" // Switch to goat's turn
+        self.nextTurn = "G"
     }
     
     func applyGoatMove(_ move: Move) {
@@ -375,15 +396,12 @@ extension BaghChalGame {
         let newPosition = self.convertToCGPoint(move.to)
 
         if nextTurn == "G" {
-            // Applying goat move
             if goatsPlaced < 20 {
-                // Placing a new goat
                 if isIntersectionFree(newPosition) {
                     self.goatPositions.append(newPosition)
                     self.goatsPlaced += 1
                 }
             } else {
-                // Moving an existing goat
                 if let index = self.goatPositions.firstIndex(of: currentPosition) {
                     if isValidGoatMove(from: currentPosition, to: newPosition) {
                         self.goatPositions[index] = newPosition
@@ -392,20 +410,19 @@ extension BaghChalGame {
             }
         }
 
-        // Update the game state after applying the move
         self.updateGameState()
-        self.nextTurn = "B" // Switch to tiger's turn
+        self.nextTurn = "B"
     }
     
     func bestMoveForTigers() -> Move? {
-        // Ensure it's the tiger's turn before proceeding
         guard nextTurn == "B" else { return nil }
 
         var bestScore = -Double.infinity
         var bestMove: Move?
 
         for move in possibleMoves() {
-            let score = evaluateMoveForTigers(move)
+            let simulatedGame = simulateMove(move)
+            let score = engine.minimax(game: simulatedGame, depth: engine.depth, alpha: -engine.INF, beta: engine.INF, maximizingPlayer: true)
             if score > bestScore {
                 bestScore = score
                 bestMove = move
@@ -414,28 +431,17 @@ extension BaghChalGame {
 
         return bestMove
     }
-
-    private func evaluateMoveForTigers(_ move: Move) -> Double {
-        // Implement your heuristic here. This could include factors like:
-        // - Capturing goats
-        // - Improving the positioning of tigers
-        // - Avoiding traps or blockages
-        // For now, let's return a random score as a placeholder.
-        let simulatedGame = simulateMove(move)
-         return engine.minimax(game: simulatedGame, depth: engine.depth, alpha: -engine.INF, beta: engine.INF, maximizingPlayer: true)
-//        return Double.random(in: 0..<100)
-    }
-    
+ 
     func bestMoveForGoats() -> Move? {
-        // Ensure it's the goat's turn before proceeding
         guard nextTurn == "G" else { return nil }
 
-        var bestScore = -Double.infinity
+        var bestScore = Double.infinity
         var bestMove: Move?
 
         for move in possibleMoves() {
-            let score = evaluateMoveForGoats(move)
-            if score > bestScore {
+            let simulatedGame = simulateMove(move)
+            let score = engine.minimax(game: simulatedGame, depth: engine.depth, alpha: -engine.INF, beta: engine.INF, maximizingPlayer: false)
+            if score < bestScore {
                 bestScore = score
                 bestMove = move
             }
@@ -443,32 +449,27 @@ extension BaghChalGame {
 
         return bestMove
     }
-
-    private func evaluateMoveForGoats(_ move: Move) -> Double {
-        // Implement your heuristic here. This could include factors like:
-        // - Improving the position of goats
-        // - Blocking tigers
-        // - Ensuring goats are not easily captured
-        // For now, let's return a random score as a placeholder.
-//        return Double.random(in: 0..<100)
-        let simulatedGame = simulateMove(move)
-         return engine.minimax(game: simulatedGame, depth: engine.depth, alpha: -engine.INF, beta: engine.INF, maximizingPlayer: true)
-    }
     
-    // In BaghChalGame.swift
-    func placeGoatAtNextAvailablePosition() {
-        for x in 1...rows {
-            for y in 1...columns {
-                let gridPoint = Point(x: x, y: y)
-                let potentialPosition = convertToCGPoint(gridPoint)
-                if isIntersectionFree(potentialPosition) {
-                    goatPositions.append(potentialPosition)
-                    goatsPlaced += 1
-                    updateGameState()
-                    nextTurn = "B" // Change turn to tigers
-                    return
-                }
-            }
-        }
+    func deepCopy() -> BaghChalGame {
+        let copiedGame = BaghChalGame(spacing: self.spacing,
+                                      rows: self.rows,
+                                      columns: self.columns,
+                                      diameter: self.diameter,
+                                      connectedPointsDict: self.connectedPointsDict,
+                                      baghSpecialCaptureMovesDict: self.baghSpecialCaptureMovesDict,
+                                      engine: self.engine.deepCopy())
+        
+        copiedGame.baghsTrapped = self.baghsTrapped
+        copiedGame.goatsCaptured = self.goatsCaptured
+        copiedGame.nextTurn = self.nextTurn
+        copiedGame.goatsPlaced = self.goatsPlaced
+        copiedGame.tigerPositions = self.tigerPositions
+        copiedGame.goatPositions = self.goatPositions
+        copiedGame.isGameOver = self.isGameOver
+        copiedGame.winningSide = self.winningSide
+        copiedGame.trappedTigers = Set(self.trappedTigers)
+        
+        return copiedGame
     }
+
 }

@@ -10,7 +10,7 @@ import SwiftUI
 enum NavigationDestination {
     case baghChalBoard
     case gameLobbyView // Define other destinations as needed
-    case otherDestination2
+    case messageView // Added this new case
 }
 
 enum PlayerRole {
@@ -33,8 +33,10 @@ struct OnboardingView: View {
                     CardView(gameData: gameData[index]) {
                         if index == 2 {
                             showingRoleChoiceAlert = true
+                        } else if index == 1 {
+                            navigationDestination = .messageView
                         } else {
-                            navigationDestination = index == 0 ? .gameLobbyView : .otherDestination2
+                            navigationDestination = index == 0 ? .gameLobbyView : .messageView
                         }
                     }
                     .tag(index)
@@ -48,6 +50,10 @@ struct OnboardingView: View {
             }
             
             NavigationLink(destination: BaghChalBoard(userRole: userRole, playAgainstAI: playAgainstAI), tag: .baghChalBoard, selection: $navigationDestination) {
+                EmptyView()
+            }
+            
+            NavigationLink(destination: MessageView(), tag: .messageView, selection: $navigationDestination) {
                 EmptyView()
             }
 

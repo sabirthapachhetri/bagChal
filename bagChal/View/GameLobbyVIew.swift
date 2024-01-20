@@ -8,9 +8,6 @@
 import SwiftUI
 import Firebase
 
-import SwiftUI
-import Firebase
-
 struct GameLobbyView: View {
     @EnvironmentObject var viewModel: GameLobbyViewModel
     @State private var selectedGame: GameSession?
@@ -63,10 +60,11 @@ struct GameLobbyView: View {
         // Get the current user's ID
         guard let playerId = Auth.auth().currentUser?.uid else {
             print("User must be signed in to create or join a game")
-            // Handle the error, maybe show an alert or perform some UI action
             return
         }
         
+        self.navigateToGameBoard = true
+
         // Decide whether to create a new game or join an existing one
         if game.player1Id.isEmpty {
             // If player1Id is empty, it means no game is created, so create a new one

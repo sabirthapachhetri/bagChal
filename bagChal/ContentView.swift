@@ -10,7 +10,8 @@ import SwiftUI
 struct ContentView: View {
 
     var body: some View {
-        LoginRegisterChoiceView()
+//        LoginRegisterChoiceView()
+        BaghChalBoard(userRole: .goat, playAgainstAI: true)
     }
 }
 

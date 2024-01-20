@@ -17,6 +17,7 @@ struct BaghChalBoard: View {
     let intersectionCircleDiameter: CGFloat = 40
 
     let connectedPoints = connectedPointsDict
+    let baghSpecialCaptureMoves = baghSpecialCaptureMovesDict
     
     var isAIGoat: Bool {
         playAgainstAI && userRole == .tiger
@@ -26,7 +27,7 @@ struct BaghChalBoard: View {
         playAgainstAI && userRole == .goat
     }
 
-    @StateObject private var game = BaghChalGame(spacing: 80, rows: 5, columns: 5, diameter: 40, connectedPointsDict: connectedPointsDict)
+    @StateObject private var game = BaghChalGame(spacing: 80, rows: 5, columns: 5, diameter: 40, connectedPointsDict: connectedPointsDict, baghSpecialCaptureMovesDict: baghSpecialCaptureMovesDict)
     @State private var showAlert = false
 
     var body: some View {
