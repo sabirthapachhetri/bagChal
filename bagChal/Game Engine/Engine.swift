@@ -10,39 +10,39 @@ import Foundation
 class Engine {
     var depth: Int
 
-    init(depth: Int = 3) {
+    init(depth: Int = 1) {
         self.depth = depth
     }
     
     let INF: Double = Double.greatestFiniteMagnitude
 
     func staticEvaluation(for game: BaghChalGame) -> Double {
-        // Check for end game conditions first
-        let end = game.isGameOver
-        if end {
-            let winner = game.winner()
-            switch winner {
-            case "G":
-                return INF
-            case "B":
-                return -INF
-            default:
-                return 0
+        // Endgame conditions
+        if game.isGameOver {
+            switch game.winner() {
+            case "G": return INF // Goats win
+            case "B": return -INF // Tigers win
+            default: break
             }
         }
 
         var score = 0.0
-        // Adjust these weights as necessary
+
+        // Scoring weights
         let goatWeight = 10.0
-        let tigerWeight = 10.0
+        let tigerWeight = 15.0
         let mobilityWeight = 5.0
         let captureWeight = 200.0
+        let goatSafetyWeight = 5.0
+        let tigerThreatWeight = 10.0
 
-        // Calculate score based on captured goats and trapped tigers
-        score += goatWeight * Double(game.goatsCaptured)
-        score -= tigerWeight * Double(game.baghsTrapped)
+        // Goat captures
+        score -= goatWeight * Double(game.goatsCaptured)
 
-        // Evaluate mobility (how many moves are available for tigers)
+        // Tiger traps
+        score += tigerWeight * Double(game.baghsTrapped)
+
+        // Tiger mobility
         let tigerMobility = game.tigerPositions.map { position -> Int in
             var moves: [Move] = []
             game.addTigerMoves(from: game.convertToGridPoint(position), to: &moves)
@@ -50,7 +50,7 @@ class Engine {
         }.reduce(0, +)
         score += mobilityWeight * Double(tigerMobility)
 
-        // Evaluate capture potential
+        // Tiger capture potential
         let capturePotential = game.tigerPositions.contains { position -> Bool in
             var moves: [Move] = []
             game.addTigerMoves(from: game.convertToGridPoint(position), to: &moves)
@@ -59,10 +59,20 @@ class Engine {
         if capturePotential {
             score += captureWeight
         }
-        
+
+        // Goat safety and tiger threat
+        for goatPosition in game.goatPositions {
+            let goatGridPoint = game.convertToGridPoint(goatPosition)
+            if game.isGoatSafe(at: goatGridPoint) {
+                score += goatSafetyWeight
+            }
+            if game.isGoatUnderThreat(at: goatGridPoint) {
+                score -= tigerThreatWeight
+            }
+        }
+
         return score
     }
-
 
     // The minimax algorithm with alpha-beta pruning
     func minimax(game: BaghChalGame, depth: Int, alpha: Double, beta: Double, maximizingPlayer: Bool) -> Double {

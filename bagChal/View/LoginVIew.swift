@@ -10,7 +10,6 @@ import FirebaseAuth
 
 struct LoginView: View {
     @Environment(\.presentationMode) var presentationMode
-//    @AppStorage("isSignedIn") var isSignedIn: Bool = false
     @State private var email: String = ""
     @State private var password: String = ""
     @State private var showAlert = false
@@ -19,56 +18,54 @@ struct LoginView: View {
     @State private var isSignedIn = false
 
     var body: some View {
-        VStack {
-            Image("loginPage")
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                .frame(width: 450, height: 450)
-            
-            HStack {
-                Text("Sign in to your account")
-                    .font(.title2)
-                    .fontWeight(.semibold)
+        ScrollView {
+            VStack {
+                Image("loginPage")
+                    .resizable()
+                    .scaledToFit() // Adapt image size to the parent view
+                    .padding() // Adaptive padding
+
+                HStack {
+                    Text("Sign in to your account")
+                        .font(.title2)
+                        .fontWeight(.semibold)
+                    Spacer()
+                }
+                .padding(.top)
+                .padding(.leading, 15)
+                .padding(.bottom, 45)
+
+                CustomTextField(imageName: "envelope", placeholderText: "Email ID", isSecureField: false, text: $email)
+                    .padding(.bottom, 25)
+
+                CustomTextField(imageName: "lock", placeholderText: "Password", isSecureField: true, text: $password)
+                    .padding(.bottom, 35)
+
+                Button("Sign In") {
+                    signInUser()
+                }
+                .foregroundColor(.white)
+                .padding()
+                .frame(minWidth: 0, maxWidth: .infinity) // Flexible width
+                .background(Color.orange)
+                .cornerRadius(10)
+
+                NavigationLink(destination: OnboardingView(), isActive: $isSignedIn) {
+                    EmptyView()
+                }
+                .accentColor(Color.orange)
+
                 Spacer()
             }
-            .padding(.top)
-            .padding(.leading, 15)
-            .padding(.bottom, 45)
-
-            CustomTextField(imageName: "envelope", placeholderText: "Email ID", isSecureField: false, text: $email)
-                .padding(.bottom, 25)
-
-            CustomTextField(imageName: "lock", placeholderText: "Password", isSecureField: true, text: $password)
-                .padding(.bottom, 35)
-
-            Button("Sign In") {
-                signInUser()
-            }
-            .foregroundColor(.white)
-            .frame(maxWidth: .infinity)
             .padding()
-            .background(Color.orange)
-            .cornerRadius(10)
-
-            NavigationLink(destination: OnboardingView(), isActive: $isSignedIn) {
-                EmptyView()
+            .background(Color(red: 254/255, green: 254/255, blue: 254/255).ignoresSafeArea(edges: .all))
+            .alert(isPresented: $showAlert) {
+                Alert(
+                    title: Text(alertTitle),
+                    message: Text(alertMessage),
+                    dismissButton: .default(Text("OK"))
+                )
             }
-//            NavigationLink(destination: MessageView(), isActive: $isSignedIn) {
-//                EmptyView()
-//            }
-            .accentColor(Color.orange)
-
-            Spacer()
-        }
-        .padding()
-        .background(Color(red: 254/255, green: 254/255, blue: 254/255).ignoresSafeArea(edges: .all))
-        .alert(isPresented: $showAlert) {
-            Alert(
-                title: Text(alertTitle),
-                message: Text(alertMessage),
-                dismissButton: .default(Text("OK")) {
-                }
-            )
         }
     }
 
@@ -90,7 +87,6 @@ struct LoginView: View {
         }
     }
 }
-
 
 struct LoginView_Previews: PreviewProvider {
     static var previews: some View {

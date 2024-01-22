@@ -43,6 +43,9 @@ struct OnboardingView: View {
                 }
             }
             .tabViewStyle(PageTabViewStyle())
+            .navigationBarTitle("", displayMode: .inline) // Clear the title and set it to inline mode
+            .navigationBarHidden(true) // Hide the navigation bar
+
             .indexViewStyle(PageIndexViewStyle(backgroundDisplayMode: .never))
             
             NavigationLink(destination: GameLobbyView().environmentObject(gameLobbyVM), tag: .gameLobbyView, selection: $navigationDestination) {

@@ -44,6 +44,7 @@ struct GameLobbyView: View {
                 }
             }
             .navigationTitle("Game Lobby")
+            .navigationBarTitleDisplayMode(.inline)
             .onAppear {
                 viewModel.fetchAvailableGames()
             }

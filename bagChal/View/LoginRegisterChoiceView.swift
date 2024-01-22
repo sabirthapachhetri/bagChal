@@ -16,6 +16,7 @@ struct LoginRegisterChoiceView: View {
             ZStack {
                 VStack {
                     Spacer()
+                    
                     HStack {
                         Text("Bagchal Adventure: \nExplore the World of Strategy")
                             .font(.title2)
@@ -23,29 +24,29 @@ struct LoginRegisterChoiceView: View {
                             .multilineTextAlignment(.leading)
                             .foregroundColor(Color.black)
                             .padding()
-                            .padding(.leading)
                         Spacer()
                     }
-                    
+
                     Spacer()
-                    
+
                     Image("tigerGoat")
                         .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: 450, height: 450)
-                    
+                        .scaledToFit() // Adapt image size to the parent view
+                        .padding() // Adaptive padding
+
                     Spacer()
-                    
+
                     // Use NavigationLink for login
                     NavigationLink(destination: LoginView(), isActive: $showingLogin) {
                         Text("Login")
                             .font(.headline)
                             .foregroundColor(.white)
-                            .frame(width: 350, height: 44)
+                            .padding() // Adaptive padding
+                            .frame(minWidth: 0, maxWidth: .infinity) // Flexible width
                             .background(Color.orange)
                             .cornerRadius(10)
                     }
-                    
+
                     // Create account button
                     Button(action: {
                         self.showingRegister = true
@@ -53,7 +54,8 @@ struct LoginRegisterChoiceView: View {
                         Text("Create account")
                             .font(.headline)
                             .foregroundColor(.black)
-                            .frame(width: 350, height: 44)
+                            .padding() // Adaptive padding
+                            .frame(minWidth: 0, maxWidth: .infinity) // Flexible width
                             .overlay(
                                 RoundedRectangle(cornerRadius: 10)
                                     .stroke(Color.gray, lineWidth: 1)
@@ -62,10 +64,10 @@ struct LoginRegisterChoiceView: View {
                     .sheet(isPresented: $showingRegister) {
                         RegisterView()
                     }
-                    
+
                     Spacer()
                 }
-                .padding()
+                .padding() // Padding for the entire VStack
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .background(Color(red: 249/255, green: 244/255, blue: 236/255, opacity: 1))
@@ -79,3 +81,4 @@ struct LoginRegisterChoiceView_Previews: PreviewProvider {
         LoginRegisterChoiceView()
     }
 }
+ 

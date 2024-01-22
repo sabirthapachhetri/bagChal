@@ -11,7 +11,7 @@ class BaghChalGame: ObservableObject {
     // Game state properties
     @Published var baghsTrapped: Int = 0
     @Published var goatsCaptured: Int = 0
-    @Published var nextTurn: String = "G" // or "B"
+    @Published var nextTurn: String = "B" // or "B"
     @Published var goatsPlaced: Int = 0
     @Published var tigerPositions: [CGPoint]
     @Published var goatPositions: [CGPoint]
@@ -277,8 +277,8 @@ extension BaghChalGame {
                 if let index = simulatedGame.tigerPositions.firstIndex(of: currentPosition) {
                     simulatedGame.tigerPositions[index] = newPosition
                     // Check for and perform captures
-                    if simulatedGame.canTigerCapture(from: currentPosition, to: newPosition) {
-                        simulatedGame.performTigerCapture(from: currentPosition, to: newPosition)
+                    if canTigerCapture(from: currentPosition, to: newPosition) {
+                        performTigerCapture(from: currentPosition, to: newPosition)
                     }
                 }
             }
@@ -471,5 +471,39 @@ extension BaghChalGame {
         
         return copiedGame
     }
-
 }
+
+extension BaghChalGame {
+    func isGoatSafe(at point: Point) -> Bool {
+        // Check if adjacent to any tiger
+        for tigerPos in tigerPositions {
+            let tigerGridPoint = convertToGridPoint(tigerPos)
+            if let connectedPoints = connectedPointsDict[tigerGridPoint], connectedPoints.contains(point) {
+                // Check for free space behind the goat relative to the tiger
+                let direction = Point(x: point.x - tigerGridPoint.x, y: point.y - tigerGridPoint.y)
+                let oppositePoint = Point(x: point.x + direction.x, y: point.y + direction.y)
+                if isPointWithinBoard(convertToCGPoint(oppositePoint)) && isIntersectionFree(convertToCGPoint(oppositePoint)) {
+                    return false // Goat is not safe
+                }
+            }
+        }
+        return true // Goat is safe
+    }
+
+    func isGoatUnderThreat(at point: Point) -> Bool {
+        // Check if adjacent to any tiger
+        for tigerPos in tigerPositions {
+            let tigerGridPoint = convertToGridPoint(tigerPos)
+            if let connectedPoints = connectedPointsDict[tigerGridPoint], connectedPoints.contains(point) {
+                // Check for free space behind the goat relative to the tiger
+                let direction = Point(x: point.x - tigerGridPoint.x, y: point.y - tigerGridPoint.y)
+                let oppositePoint = Point(x: point.x + direction.x, y: point.y + direction.y)
+                if isPointWithinBoard(convertToCGPoint(oppositePoint)) && isIntersectionFree(convertToCGPoint(oppositePoint)) {
+                    return true // Goat is under threat
+                }
+            }
+        }
+        return false // Goat is not under threat
+    }
+}
+
