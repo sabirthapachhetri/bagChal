@@ -5,15 +5,15 @@
 //  Created by Sabir Thapa on 02/12/2023.
 //
 
-import Foundation
+import SwiftUI
+
 
 // Define a struct to represent a point that conforms to Hashable.
-struct Point: Hashable {
+struct Point: Codable, Hashable {
     let x: Int
     let y: Int
 }
-
-struct Move {
+struct Move: Codable {
     var from: Point
     var to: Point
     

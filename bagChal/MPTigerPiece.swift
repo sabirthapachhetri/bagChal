@@ -1,13 +1,13 @@
 //
-//  TigerPiece.swift
+//  MPTigerPiece.swift
 //  bagChal
 //
-//  Created by Sabir Thapa on 27/11/2023.
+//  Created by Sabir Thapa on 24/01/2024.
 //
 
 import SwiftUI
 
-struct TigerPiece: View {
+struct MPTigerPiece: View {
     let rows: Int
     let columns: Int
     let spacing: CGFloat
@@ -15,9 +15,9 @@ struct TigerPiece: View {
 
     @Binding var goatPositions: [CGPoint]
     @Binding var tigerPositions: [CGPoint]
-    @ObservedObject var game: BaghChalGame
-    var isAITiger: Bool
-    
+    @EnvironmentObject var game: GameService
+    @EnvironmentObject var connectionManager: MPConnectionManager
+   
     var body: some View {
         ForEach(0..<tigerPositions.count, id: \.self) { index in
             Image("tiger")
@@ -25,26 +25,24 @@ struct TigerPiece: View {
                 .frame(width: diameter, height: diameter)
                 .position(tigerPositions[index])
                 .gesture(
-                    isAITiger ? nil : DragGesture()
+                    DragGesture()
                         .onEnded { gesture in
                             handleTigerDrag(index: index, gesture: gesture)
                         }
                 )
         }
-        .onChange(of: game.nextTurn) { newTurn in
-            if newTurn == "B" && isAITiger {
-                performAITigerMove()
-            }
-        }
     }
-
+    
     func handleTigerDrag(index: Int, gesture: DragGesture.Value) {
-        if game.nextTurn == "B" {
+        if game.player2.isCurrent {
             let draggedPosition = CGPoint(
                 x: tigerPositions[index].x + gesture.translation.width,
                 y: tigerPositions[index].y + gesture.translation.height
             )
             let nearestIntersectionPoint = game.convertToCGPoint(game.convertToGridPoint(draggedPosition))
+
+            // Calculate fromPoint before updating tigerPositions[index]
+            let fromPoint = game.convertToGridPoint(tigerPositions[index])
 
             var moveMade = false
 
@@ -58,21 +56,21 @@ struct TigerPiece: View {
             }
 
             if moveMade {
+                // Calculate toPoint after updating tigerPositions[index]
+                let toPoint = game.convertToGridPoint(nearestIntersectionPoint)
+
+                // Send move data if in peer-to-peer game mode
+                if game.gameType == .peer {
+                    let gameMove = MPGameMove(action: .move, playerName: connectionManager.myPeerId.displayName, move: Move(from: fromPoint, to: toPoint))
+                    connectionManager.send(gameMove: gameMove)
+                }
                 game.updateGameState()
-                game.nextTurn = "G"
+                game.toggleCurrentPlayer()
             } else {
-                tigerPositions[index] = game.convertToCGPoint(game.convertToGridPoint(tigerPositions[index]))
+                // Revert the position if the move wasn't made
+                tigerPositions[index] = game.convertToCGPoint(fromPoint)
             }
         }
     }
 
-
-    private func performAITigerMove() {
-         if let bestMove = game.bestMoveForTigers() {
-             game.applyTigerMove(bestMove)
-             tigerPositions = game.tigerPositions
-             game.updateGameState()
-             game.nextTurn = "G"
-         }
-    }
 }

@@ -1,52 +1,38 @@
 //
-//  BagChalBoard.swift
+//  MPBaghChalBoardView.swift
 //  bagChal
 //
-//  Created by Sabir Thapa on 26/11/2023.
+//  Created by Sabir Thapa on 24/01/2024.
 //
 
 import SwiftUI
 
-struct BaghChalBoard: View {
-    let userRole: PlayerRole?
-    let playAgainstAI: Bool // Add this
+struct MPBaghChalBoardView: View {
     let columns = 5
     let rows = 5
     let spacing: CGFloat = 80
     let lineWidth: CGFloat = 2
     let intersectionCircleDiameter: CGFloat = 40
-
     let connectedPoints = connectedPointsDict
     let baghSpecialCaptureMoves = baghSpecialCaptureMovesDict
-    
-    var gameType: GameType = .undetermined
-    @EnvironmentObject var mpConnectionManager: MPConnectionManager
-    @State private var startGame = false
 
-    
-    var isAIGoat: Bool {
-        playAgainstAI && userRole == .tiger
-    }
-
-    var isAITiger: Bool {
-        playAgainstAI && userRole == .goat
-    }
-
-    @StateObject private var game = BaghChalGame(spacing: 80, rows: 5, columns: 5, diameter: 40, connectedPointsDict: connectedPointsDict, baghSpecialCaptureMovesDict: baghSpecialCaptureMovesDict)
+    @EnvironmentObject var game: GameService
+    @EnvironmentObject var connectionManager: MPConnectionManager
     @State private var showAlert = false
 
     var body: some View {
-        VStack {
-            GameStatusHeaderView(baghsTrapped: $game.baghsTrapped, goatsCaptured: $game.goatsCaptured, game: game)
+        VStack(spacing: 10) {
+            MPGameStatusHeaderView(baghsTrapped: $game.baghsTrapped, goatsCaptured: $game.goatsCaptured, game: game)
+                .padding(.bottom, -60) 
 
             ZStack {
                 GridDrawing(rows: rows, columns: columns, spacing: spacing, lineWidth: lineWidth)
 
                 IntersectionCircles(rows: rows, columns: columns, spacing: spacing, diameter: intersectionCircleDiameter, connectedPointsDict: connectedPoints)
 
-                TigerPiece(rows: rows, columns: columns, spacing: spacing, diameter: intersectionCircleDiameter, goatPositions: $game.goatPositions, tigerPositions: $game.tigerPositions, game: game, isAITiger: isAITiger)
+                MPTigerPiece(rows: rows, columns: columns, spacing: spacing, diameter: intersectionCircleDiameter, goatPositions: $game.goatPositions, tigerPositions: $game.tigerPositions, game: _game)
 
-                GoatPiece(rows: rows, columns: columns, spacing: spacing, diameter: intersectionCircleDiameter, goatPositions: $game.goatPositions, tigerPositions: $game.tigerPositions, game: game, isAIGoat: isAIGoat)
+                MPGoatPiece(rows: rows, columns: columns, spacing: spacing, diameter: intersectionCircleDiameter, goatPositions: $game.goatPositions, tigerPositions: $game.tigerPositions, game: _game)
             }
             .frame(width: spacing * CGFloat(columns - 1), height: spacing * CGFloat(rows - 1))
             .padding(spacing)

@@ -8,11 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		9970437EE24CE9FCE762CA1C /* Pods_bagChal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 951BB8B552856B04D349EEFF /* Pods_bagChal.framework */; };
-		EB070AFA2B43D23A0052EAD9 /* GameLobbyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB070AF92B43D2390052EAD9 /* GameLobbyViewModel.swift */; };
-		EB070AFC2B43E4C80052EAD9 /* GameLobbyVIew.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB070AFB2B43E4C80052EAD9 /* GameLobbyVIew.swift */; };
 		EB0F68AB2AC99A4200FE4D24 /* LoginVIew.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB0F68AA2AC99A4200FE4D24 /* LoginVIew.swift */; };
 		EB0F68AF2AC9ABDF00FE4D24 /* LoginRegisterChoiceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB0F68AE2AC9ABDF00FE4D24 /* LoginRegisterChoiceView.swift */; };
 		EB0F68B52ACAE2CF00FE4D24 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB0F68B42ACAE2CF00FE4D24 /* RegisterView.swift */; };
+		EB1EEE992B5EB3BB00BF8415 /* MPConnectionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB1EEE982B5EB3BB00BF8415 /* MPConnectionManager.swift */; };
+		EB1EEE9B2B5EB3C900BF8415 /* MPGameMove.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB1EEE9A2B5EB3C900BF8415 /* MPGameMove.swift */; };
+		EB1EEE9D2B5EB3D900BF8415 /* MPPeersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB1EEE9C2B5EB3D900BF8415 /* MPPeersView.swift */; };
+		EB1EEEA12B5EB62500BF8415 /* BaghChalGameModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB1EEEA02B5EB62500BF8415 /* BaghChalGameModel.swift */; };
 		EB36C0E52B4EBB8B00054783 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = EB36C0E42B4EBB8B00054783 /* FirebaseAnalytics */; };
 		EB36C0E72B4EBB8B00054783 /* FirebaseAnalyticsSwift-Beta in Frameworks */ = {isa = PBXBuildFile; productRef = EB36C0E62B4EBB8B00054783 /* FirebaseAnalyticsSwift-Beta */; };
 		EB36C0E92B4EBB8B00054783 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */ = {isa = PBXBuildFile; productRef = EB36C0E82B4EBB8B00054783 /* FirebaseAnalyticsWithoutAdIdSupport */; };
@@ -41,9 +43,15 @@
 		EB36C11F2B4EDEF500054783 /* TitleRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB36C11E2B4EDEF500054783 /* TitleRow.swift */; };
 		EB36C1212B4EE00900054783 /* MessageField.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB36C1202B4EE00900054783 /* MessageField.swift */; };
 		EB4C75CD2AC7B72B00AA575B /* bagChalApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB4C75CC2AC7B72B00AA575B /* bagChalApp.swift */; };
-		EB4C75CF2AC7B72B00AA575B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB4C75CE2AC7B72B00AA575B /* ContentView.swift */; };
 		EB4C75D12AC7B72F00AA575B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EB4C75D02AC7B72F00AA575B /* Assets.xcassets */; };
 		EB4C75D42AC7B72F00AA575B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EB4C75D32AC7B72F00AA575B /* Preview Assets.xcassets */; };
+		EB68D0782B617A7400FECB9D /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB68D0772B617A7400FECB9D /* GameView.swift */; };
+		EB68D07A2B617B8E00FECB9D /* MPBaghChalBoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB68D0792B617B8E00FECB9D /* MPBaghChalBoardView.swift */; };
+		EB68D07C2B617C5F00FECB9D /* MPTigerPiece.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB68D07B2B617C5F00FECB9D /* MPTigerPiece.swift */; };
+		EB68D07E2B617C6A00FECB9D /* MPGoatPiece.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB68D07D2B617C6A00FECB9D /* MPGoatPiece.swift */; };
+		EB68D0802B617E7400FECB9D /* GameService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB68D07F2B617E7400FECB9D /* GameService.swift */; };
+		EB68D0822B61801B00FECB9D /* MPGameStatusHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB68D0812B61801B00FECB9D /* MPGameStatusHeaderView.swift */; };
+		EB68D0842B622BE900FECB9D /* YourNameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB68D0832B622BE900FECB9D /* YourNameView.swift */; };
 		EB7CBEEF2B1B366D009CF97C /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB7CBEEE2B1B366D009CF97C /* Constants.swift */; };
 		EB979A2E2B2F2E44002318BA /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB979A2D2B2F2E44002318BA /* CardView.swift */; };
 		EBABCC282B2DBAB10089DB60 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBABCC272B2DBAB10089DB60 /* OnboardingView.swift */; };
@@ -59,6 +67,8 @@
 		EBD0CAC02B36AA6A00921C19 /* GameModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD0CABF2B36AA6A00921C19 /* GameModel.swift */; };
 		EBD0CAC32B36AB0500921C19 /* GameData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD0CAC22B36AB0500921C19 /* GameData.swift */; };
 		EBD0CAC52B36B3B400921C19 /* StartButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD0CAC42B36B3B400921C19 /* StartButtonView.swift */; };
+		EBD1E8622B6114E300EE0E1C /* StartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD1E8612B6114E300EE0E1C /* StartView.swift */; };
+		EBD1E8662B616AF800EE0E1C /* ViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD1E8652B616AF800EE0E1C /* ViewModifier.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -82,11 +92,13 @@
 		951BB8B552856B04D349EEFF /* Pods_bagChal.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_bagChal.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C398076221FDCA8BA96FCB31 /* Pods-bagChal.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bagChal.debug.xcconfig"; path = "Target Support Files/Pods-bagChal/Pods-bagChal.debug.xcconfig"; sourceTree = "<group>"; };
 		DC4B5460F36ECD41F39EECC2 /* Pods-bagChal.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bagChal.release.xcconfig"; path = "Target Support Files/Pods-bagChal/Pods-bagChal.release.xcconfig"; sourceTree = "<group>"; };
-		EB070AF92B43D2390052EAD9 /* GameLobbyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameLobbyViewModel.swift; sourceTree = "<group>"; };
-		EB070AFB2B43E4C80052EAD9 /* GameLobbyVIew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameLobbyVIew.swift; sourceTree = "<group>"; };
 		EB0F68AA2AC99A4200FE4D24 /* LoginVIew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVIew.swift; sourceTree = "<group>"; };
 		EB0F68AE2AC9ABDF00FE4D24 /* LoginRegisterChoiceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRegisterChoiceView.swift; sourceTree = "<group>"; };
 		EB0F68B42ACAE2CF00FE4D24 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
+		EB1EEE982B5EB3BB00BF8415 /* MPConnectionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPConnectionManager.swift; sourceTree = "<group>"; };
+		EB1EEE9A2B5EB3C900BF8415 /* MPGameMove.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPGameMove.swift; sourceTree = "<group>"; };
+		EB1EEE9C2B5EB3D900BF8415 /* MPPeersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPPeersView.swift; sourceTree = "<group>"; };
+		EB1EEEA02B5EB62500BF8415 /* BaghChalGameModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaghChalGameModel.swift; sourceTree = "<group>"; };
 		EB36C1142B4ED45000054783 /* MessagesManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesManager.swift; sourceTree = "<group>"; };
 		EB36C1162B4ED5B500054783 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		EB36C1182B4ED71F00054783 /* MessageBubble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageBubble.swift; sourceTree = "<group>"; };
@@ -96,11 +108,17 @@
 		EB36C1202B4EE00900054783 /* MessageField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageField.swift; sourceTree = "<group>"; };
 		EB4C75C92AC7B72B00AA575B /* bagChal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = bagChal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB4C75CC2AC7B72B00AA575B /* bagChalApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = bagChalApp.swift; sourceTree = "<group>"; };
-		EB4C75CE2AC7B72B00AA575B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		EB4C75D02AC7B72F00AA575B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EB4C75D32AC7B72F00AA575B /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		EB4C75D92AC7B72F00AA575B /* bagChalTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = bagChalTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB4C75E32AC7B72F00AA575B /* bagChalUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = bagChalUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		EB68D0772B617A7400FECB9D /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
+		EB68D0792B617B8E00FECB9D /* MPBaghChalBoardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPBaghChalBoardView.swift; sourceTree = "<group>"; };
+		EB68D07B2B617C5F00FECB9D /* MPTigerPiece.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPTigerPiece.swift; sourceTree = "<group>"; };
+		EB68D07D2B617C6A00FECB9D /* MPGoatPiece.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPGoatPiece.swift; sourceTree = "<group>"; };
+		EB68D07F2B617E7400FECB9D /* GameService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameService.swift; sourceTree = "<group>"; };
+		EB68D0812B61801B00FECB9D /* MPGameStatusHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPGameStatusHeaderView.swift; sourceTree = "<group>"; };
+		EB68D0832B622BE900FECB9D /* YourNameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YourNameView.swift; sourceTree = "<group>"; };
 		EB7CBEEE2B1B366D009CF97C /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		EB979A2D2B2F2E44002318BA /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		EBABCC272B2DBAB10089DB60 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
@@ -116,6 +134,8 @@
 		EBD0CABF2B36AA6A00921C19 /* GameModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameModel.swift; sourceTree = "<group>"; };
 		EBD0CAC22B36AB0500921C19 /* GameData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameData.swift; sourceTree = "<group>"; };
 		EBD0CAC42B36B3B400921C19 /* StartButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartButtonView.swift; sourceTree = "<group>"; };
+		EBD1E8612B6114E300EE0E1C /* StartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartView.swift; sourceTree = "<group>"; };
+		EBD1E8652B616AF800EE0E1C /* ViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModifier.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -184,7 +204,6 @@
 		EB0F68A92AC99A1100FE4D24 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				EB070AFB2B43E4C80052EAD9 /* GameLobbyVIew.swift */,
 				EB0F68AA2AC99A4200FE4D24 /* LoginVIew.swift */,
 				EB0F68AE2AC9ABDF00FE4D24 /* LoginRegisterChoiceView.swift */,
 				EB0F68B42ACAE2CF00FE4D24 /* RegisterView.swift */,
@@ -200,6 +219,26 @@
 				EB36C11E2B4EDEF500054783 /* TitleRow.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		EB1EEE972B5EB38500BF8415 /* MultiPeerConnectivity */ = {
+			isa = PBXGroup;
+			children = (
+				EB1EEE982B5EB3BB00BF8415 /* MPConnectionManager.swift */,
+				EB1EEEA02B5EB62500BF8415 /* BaghChalGameModel.swift */,
+				EB1EEE9A2B5EB3C900BF8415 /* MPGameMove.swift */,
+				EB1EEE9C2B5EB3D900BF8415 /* MPPeersView.swift */,
+				EBD1E8612B6114E300EE0E1C /* StartView.swift */,
+				EB68D0832B622BE900FECB9D /* YourNameView.swift */,
+				EB68D0772B617A7400FECB9D /* GameView.swift */,
+				EB68D0792B617B8E00FECB9D /* MPBaghChalBoardView.swift */,
+				EB68D07F2B617E7400FECB9D /* GameService.swift */,
+				EB68D07B2B617C5F00FECB9D /* MPTigerPiece.swift */,
+				EB68D07D2B617C6A00FECB9D /* MPGoatPiece.swift */,
+				EB68D0812B61801B00FECB9D /* MPGameStatusHeaderView.swift */,
+				EBD1E8652B616AF800EE0E1C /* ViewModifier.swift */,
+			);
+			name = MultiPeerConnectivity;
 			sourceTree = "<group>";
 		};
 		EB4C75C02AC7B72B00AA575B = {
@@ -225,8 +264,8 @@
 		EB4C75CB2AC7B72B00AA575B /* bagChal */ = {
 			isa = PBXGroup;
 			children = (
+				EB1EEE972B5EB38500BF8415 /* MultiPeerConnectivity */,
 				EB4C75CC2AC7B72B00AA575B /* bagChalApp.swift */,
-				EB4C75CE2AC7B72B00AA575B /* ContentView.swift */,
 				EB979A2C2B2F2E26002318BA /* Component */,
 				EBB868A82B14CE1B00E001E9 /* Game Engine */,
 				EB0F68A92AC99A1100FE4D24 /* View */,
@@ -264,7 +303,6 @@
 				EBB868A92B14CE3500E001E9 /* Engine.swift */,
 				EBB868AB2B14D3A000E001E9 /* BaghChalGame.swift */,
 				EB7CBEEE2B1B366D009CF97C /* Constants.swift */,
-				EB070AF92B43D2390052EAD9 /* GameLobbyViewModel.swift */,
 				EB36C1142B4ED45000054783 /* MessagesManager.swift */,
 			);
 			path = "Game Engine";
@@ -469,31 +507,41 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EB68D0842B622BE900FECB9D /* YourNameView.swift in Sources */,
 				EBB868A32B14BE9C00E001E9 /* IntersectionCircles.swift in Sources */,
-				EB4C75CF2AC7B72B00AA575B /* ContentView.swift in Sources */,
 				EBD08E462B13098E00133B38 /* BaghChalBoard.swift in Sources */,
 				EBABCC282B2DBAB10089DB60 /* OnboardingView.swift in Sources */,
+				EB68D0822B61801B00FECB9D /* MPGameStatusHeaderView.swift in Sources */,
 				EBCB1FD62B1CA36A00402915 /* GameStatusHeaderView.swift in Sources */,
+				EB1EEEA12B5EB62500BF8415 /* BaghChalGameModel.swift in Sources */,
+				EB68D07A2B617B8E00FECB9D /* MPBaghChalBoardView.swift in Sources */,
 				EB0F68B52ACAE2CF00FE4D24 /* RegisterView.swift in Sources */,
+				EB1EEE9D2B5EB3D900BF8415 /* MPPeersView.swift in Sources */,
 				EBB868A52B14BEBC00E001E9 /* TigerPiece.swift in Sources */,
+				EB68D0802B617E7400FECB9D /* GameService.swift in Sources */,
 				EB36C1192B4ED71F00054783 /* MessageBubble.swift in Sources */,
 				EBD0CAC32B36AB0500921C19 /* GameData.swift in Sources */,
+				EB1EEE9B2B5EB3C900BF8415 /* MPGameMove.swift in Sources */,
 				EBD0CAC52B36B3B400921C19 /* StartButtonView.swift in Sources */,
 				EB36C1212B4EE00900054783 /* MessageField.swift in Sources */,
-				EB070AFA2B43D23A0052EAD9 /* GameLobbyViewModel.swift in Sources */,
 				EBB868AC2B14D3A000E001E9 /* BaghChalGame.swift in Sources */,
+				EB68D07C2B617C5F00FECB9D /* MPTigerPiece.swift in Sources */,
 				EB0F68AB2AC99A4200FE4D24 /* LoginVIew.swift in Sources */,
+				EB68D07E2B617C6A00FECB9D /* MPGoatPiece.swift in Sources */,
+				EB68D0782B617A7400FECB9D /* GameView.swift in Sources */,
 				EB7CBEEF2B1B366D009CF97C /* Constants.swift in Sources */,
 				EB0F68AF2AC9ABDF00FE4D24 /* LoginRegisterChoiceView.swift in Sources */,
 				EBB868A72B14CB1200E001E9 /* GoatPiece.swift in Sources */,
 				EBB868AA2B14CE3500E001E9 /* Engine.swift in Sources */,
-				EB070AFC2B43E4C80052EAD9 /* GameLobbyVIew.swift in Sources */,
 				EB36C1172B4ED5B500054783 /* Message.swift in Sources */,
 				EB4C75CD2AC7B72B00AA575B /* bagChalApp.swift in Sources */,
 				EB979A2E2B2F2E44002318BA /* CardView.swift in Sources */,
+				EBD1E8662B616AF800EE0E1C /* ViewModifier.swift in Sources */,
+				EBD1E8622B6114E300EE0E1C /* StartView.swift in Sources */,
 				EB36C11D2B4EDE3200054783 /* Extensions.swift in Sources */,
 				EB36C1152B4ED45000054783 /* MessagesManager.swift in Sources */,
 				EBB868A12B14BDCD00E001E9 /* GridDrawing.swift in Sources */,
+				EB1EEE992B5EB3BB00BF8415 /* MPConnectionManager.swift in Sources */,
 				EBD0CAC02B36AA6A00921C19 /* GameModel.swift in Sources */,
 				EB36C11B2B4EDD0500054783 /* MessageView.swift in Sources */,
 				EB36C11F2B4EDEF500054783 /* TitleRow.swift in Sources */,
@@ -657,6 +705,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = bagChal/Info.plist;
+				INFOPLIST_KEY_NSLocalNetworkUsageDescription = "Would you like to play BaghChal ";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -688,6 +737,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = bagChal/Info.plist;
+				INFOPLIST_KEY_NSLocalNetworkUsageDescription = "Would you like to play BaghChal ";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

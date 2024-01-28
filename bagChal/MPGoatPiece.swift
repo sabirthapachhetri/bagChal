@@ -1,13 +1,13 @@
 //
-//  GoatPiece.swift
+//  MPGoatPiece.swift
 //  bagChal
 //
-//  Created by Sabir Thapa on 27/11/2023.
+//  Created by Sabir Thapa on 24/01/2024.
 //
 
 import SwiftUI
 
-struct GoatPiece: View {
+struct MPGoatPiece: View {
     let rows: Int
     let columns: Int
     let spacing: CGFloat
@@ -17,14 +17,9 @@ struct GoatPiece: View {
     @Binding var tigerPositions: [CGPoint]
     var totalGoats = 20
     let basePosition = CGPoint(x: 160, y: 5 * 80)
-    @ObservedObject var game: BaghChalGame
-    var isAIGoat: Bool
-//    var gameType: GameType
+    @EnvironmentObject var game: GameService
+    @EnvironmentObject var connectionManager: MPConnectionManager
 
-//    @EnvironmentObject var game: BaghChalGame
-//    @EnvironmentObject var connectionManager: MPConnectionManager
-//    @Environment(\.dismiss) var dismiss
-    
     var body: some View {
         ZStack {
             Text("\(totalGoats - game.goatsPlaced)")
@@ -39,50 +34,44 @@ struct GoatPiece: View {
                     .frame(width: diameter, height: diameter)
                     .position(goatPositions[index])
                     .gesture(
-                        isAIGoat ? nil : DragGesture()
+                        DragGesture()
                             .onEnded { gesture in
                                 handleGoatDrag(index: index, gesture: gesture)
                             }
                     )
             }
         }
-        .onChange(of: game.nextTurn) { newTurn in
-            if newTurn == "G" && isAIGoat {
-                performAIGoatMove()
-            }
-        }
     }
 
     private func handleGoatDrag(index: Int, gesture: DragGesture.Value) {
-        if game.nextTurn == "G" {
+        if game.player1.isCurrent {
             let draggedPosition = CGPoint(
                 x: goatPositions[index].x + gesture.translation.width,
                 y: goatPositions[index].y + gesture.translation.height
             )
             let nearestIntersectionPoint = game.convertToCGPoint(game.convertToGridPoint(draggedPosition))
 
+            let fromPoint = game.convertToGridPoint(goatPositions[index])
+
             if game.isValidGoatMove(from: goatPositions[index], to: nearestIntersectionPoint) {
                 goatPositions[index] = nearestIntersectionPoint
-                game.nextTurn = "B"
-                game.goatsPlaced += 1
 
-//                if gameType == .peer {
-//                    let move = Move(from: game.convertToGridPoint(goatPositions[index]), to: game.convertToGridPoint(nearestIntersectionPoint))
-//                    connectionManager.send(move: move)
-//                }
+                if !game.isPointWithinBoard(goatPositions[index]) {
+                    game.goatsPlaced += 1
+                }
+
+                let toPoint = game.convertToGridPoint(nearestIntersectionPoint)
+
+                if game.gameType == .peer {
+                    let gameMove = MPGameMove(action: .move, playerName: connectionManager.myPeerId.displayName, move: Move(from: fromPoint, to: toPoint))
+                    connectionManager.send(gameMove: gameMove)
+                }
+                game.updateGameState()
+                game.toggleCurrentPlayer()
             } else {
-                goatPositions[index] = game.convertToCGPoint(game.convertToGridPoint(goatPositions[index]))
+                goatPositions[index] = game.convertToCGPoint(fromPoint)
             }
-            game.updateGameState()
         }
     }
-
-    private func performAIGoatMove() {
-         if let bestMove = game.bestMoveForGoats() {
-             game.applyGoatMove(bestMove)
-             goatPositions = game.goatPositions
-             game.updateGameState()
-             game.nextTurn = "B"
-         }
-    }
 }
+

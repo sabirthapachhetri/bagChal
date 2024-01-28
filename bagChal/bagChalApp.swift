@@ -10,6 +10,9 @@ import Firebase
 
 @main
 struct bagChalApp: App {
+
+    @AppStorage("yourName") var yourName = ""
+    @StateObject var game = GameService(spacing: 80, rows: 5, columns: 5, diameter: 40, connectedPointsDict: connectedPointsDict, baghSpecialCaptureMovesDict: baghSpecialCaptureMovesDict)
     
     init() {
         FirebaseApp.configure()
@@ -17,8 +20,14 @@ struct bagChalApp: App {
     
     var body: some Scene {
         WindowGroup {
-            ContentView()
-                .environmentObject(BaghChalGame(spacing: 80, rows: 5, columns: 5, diameter: 40, connectedPointsDict: connectedPointsDict, baghSpecialCaptureMovesDict: baghSpecialCaptureMovesDict))
+            
+            if yourName.isEmpty {
+                YourNameView()
+            } else {
+                StartView(yourName: yourName)
+                    .environmentObject(game)
+            }
+//            BaghChalBoard(userRole: nil, playAgainstAI: false)
         }
     }
 }

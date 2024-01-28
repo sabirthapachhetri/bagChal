@@ -9,8 +9,9 @@ import SwiftUI
 
 enum NavigationDestination {
     case baghChalBoard
-    case gameLobbyView // Define other destinations as needed
-    case messageView // Added this new case
+    case gameLobbyView
+    case messageView
+    case peerView
 }
 
 enum PlayerRole {
@@ -21,10 +22,12 @@ struct OnboardingView: View {
     var gameDatas: [GameModel] = gameData
     @State private var selectedIndex = 0
     @State private var navigationDestination: NavigationDestination?
-    @StateObject var gameLobbyVM = GameLobbyViewModel()
     @State private var userRole: PlayerRole? = nil
     @State private var playAgainstAI: Bool = false
     @State private var showingRoleChoiceAlert = false
+    
+    @State private var startGame = true
+    @StateObject var mpConnectionManager = MPConnectionManager(yourName: "Eric Cartman")
 
     var body: some View {
         ZStack {
@@ -34,9 +37,9 @@ struct OnboardingView: View {
                         if index == 2 {
                             showingRoleChoiceAlert = true
                         } else if index == 1 {
-                            navigationDestination = .messageView
+                            navigationDestination = .peerView
                         } else {
-                            navigationDestination = index == 0 ? .gameLobbyView : .messageView
+                            navigationDestination = index == 0 ? .baghChalBoard : .peerView
                         }
                     }
                     .tag(index)
@@ -48,7 +51,7 @@ struct OnboardingView: View {
 
             .indexViewStyle(PageIndexViewStyle(backgroundDisplayMode: .never))
             
-            NavigationLink(destination: GameLobbyView().environmentObject(gameLobbyVM), tag: .gameLobbyView, selection: $navigationDestination) {
+            NavigationLink(destination: BaghChalBoard(userRole: nil, playAgainstAI: false), tag: .baghChalBoard, selection: $navigationDestination) {
                 EmptyView()
             }
             
@@ -56,7 +59,7 @@ struct OnboardingView: View {
                 EmptyView()
             }
             
-            NavigationLink(destination: MessageView(), tag: .messageView, selection: $navigationDestination) {
+            NavigationLink(destination: MPPeersView(startGame: $startGame).environmentObject(mpConnectionManager), tag: .peerView, selection: $navigationDestination) {
                 EmptyView()
             }
 
