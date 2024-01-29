@@ -22,12 +22,6 @@ struct MPGoatPiece: View {
 
     var body: some View {
         ZStack {
-            Text("\(totalGoats - game.goatsPlaced)")
-                .font(.title)
-                .foregroundColor(.black)
-                .position(x: basePosition.x, y: basePosition.y + diameter)
-                .frame(alignment: .center)
-
             ForEach(0..<goatPositions.count, id: \.self) { index in
                 Image("goat")
                     .resizable()

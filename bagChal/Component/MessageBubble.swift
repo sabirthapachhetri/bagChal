@@ -36,4 +36,3 @@ struct MessageBubble: View {
         .padding(.horizontal, 10)
     }
 }
-

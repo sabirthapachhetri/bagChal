@@ -70,4 +70,43 @@ class MessagesManager: ObservableObject {
             print("Error adding message to Firestore: \(error)")
         }
     }
+    
+
+    // Updated clear and fetch logic
+    func refreshMessages() {
+        clearLocalMessages() // Clear messages locally immediately
+        deleteAllMessagesFromFirestore { [weak self] success in
+            if success {
+                self?.getMessages() // Fetch messages only after ensuring they are cleared from Firestore
+            }
+        }
+    }
+
+    func clearLocalMessages() {
+        DispatchQueue.main.async {
+            self.messages.removeAll()
+        }
+    }
+
+    func deleteAllMessagesFromFirestore(completion: @escaping (Bool) -> Void) {
+        db.collection("messages").getDocuments { (snapshot, error) in
+            guard let documents = snapshot?.documents else {
+                print("Error fetching documents for deletion: \(error?.localizedDescription ?? "Unknown error")")
+                completion(false)
+                return
+            }
+            for document in documents {
+                self.db.collection("messages").document(document.documentID).delete { err in
+                    if let err = err {
+                        print("Error removing document: \(err)")
+                        completion(false)
+                        return
+                    }
+                }
+            }
+            completion(true)
+        }
+    }
 }
+
+

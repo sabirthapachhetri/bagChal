@@ -10,7 +10,9 @@ import SwiftUI
 struct GameView: View {
     @EnvironmentObject var game: GameService
     @EnvironmentObject var connectionManager: MPConnectionManager
+    @EnvironmentObject var messagesManager: MessagesManager // Add this line
     @Environment(\.dismiss) var dismiss
+    @State private var isShowingMessages = false
     var body: some View {
         VStack {
             if [game.player1.isCurrent, game.player2.isCurrent].allSatisfy{ $0 == false} {
@@ -62,13 +64,20 @@ struct GameView: View {
             Spacer()
         }
         .toolbar {
-            ToolbarItem(placement: .navigationBarTrailing) {
+            ToolbarItemGroup(placement: .navigationBarTrailing) {
                 Button("End Game") {
                     dismiss()
                     if game.gameType == .peer {
                         let gameMove = MPGameMove(action: .end, playerName: nil, move: nil)
                         connectionManager.send(gameMove: gameMove)
                     }
+                }
+                .buttonStyle(.bordered)
+
+                Button(action: {
+                    isShowingMessages = true
+                }) {
+                    Image(systemName: "bubble.right")
                 }
                 .buttonStyle(.bordered)
             }
@@ -81,6 +90,10 @@ struct GameView: View {
             }
         }
         .inNavigationStack()
+        .sheet(isPresented: $isShowingMessages) {
+            MessageView()
+                .environmentObject(messagesManager) 
+        }
     }
 }
 

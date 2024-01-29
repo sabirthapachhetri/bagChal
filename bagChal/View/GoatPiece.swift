@@ -19,11 +19,6 @@ struct GoatPiece: View {
     let basePosition = CGPoint(x: 160, y: 5 * 80)
     @ObservedObject var game: BaghChalGame
     var isAIGoat: Bool
-//    var gameType: GameType
-
-//    @EnvironmentObject var game: BaghChalGame
-//    @EnvironmentObject var connectionManager: MPConnectionManager
-//    @Environment(\.dismiss) var dismiss
     
     var body: some View {
         ZStack {
@@ -66,10 +61,6 @@ struct GoatPiece: View {
                 game.nextTurn = "B"
                 game.goatsPlaced += 1
 
-//                if gameType == .peer {
-//                    let move = Move(from: game.convertToGridPoint(goatPositions[index]), to: game.convertToGridPoint(nearestIntersectionPoint))
-//                    connectionManager.send(move: move)
-//                }
             } else {
                 goatPositions[index] = game.convertToCGPoint(game.convertToGridPoint(goatPositions[index]))
             }

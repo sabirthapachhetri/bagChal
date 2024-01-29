@@ -28,6 +28,10 @@ struct OnboardingView: View {
     
     @State private var startGame = true
     @StateObject var mpConnectionManager = MPConnectionManager(yourName: "Eric Cartman")
+    @StateObject private var aiGame = BaghChalGame(spacing: 80, rows: 5, columns: 5, diameter: 40, connectedPointsDict: connectedPointsDict, baghSpecialCaptureMovesDict: baghSpecialCaptureMovesDict)
+    
+    @AppStorage("yourName") var yourName = ""
+    @StateObject var game = GameService(spacing: 80, rows: 5, columns: 5, diameter: 40, connectedPointsDict: connectedPointsDict, baghSpecialCaptureMovesDict: baghSpecialCaptureMovesDict)
 
     var body: some View {
         ZStack {
@@ -55,14 +59,22 @@ struct OnboardingView: View {
                 EmptyView()
             }
             
-            NavigationLink(destination: BaghChalBoard(userRole: userRole, playAgainstAI: playAgainstAI), tag: .baghChalBoard, selection: $navigationDestination) {
+            NavigationLink(destination: AIBoardView(userRole: userRole, playAgainstAI: playAgainstAI, aiGame: aiGame), tag: .gameLobbyView, selection: $navigationDestination) { 
                 EmptyView()
             }
             
-            NavigationLink(destination: MPPeersView(startGame: $startGame).environmentObject(mpConnectionManager), tag: .peerView, selection: $navigationDestination) {
-                EmptyView()
+            Group {
+                if navigationDestination == .peerView && yourName.isEmpty {
+                    NavigationLink(destination: YourNameView(), isActive: .constant(true)) {
+                        EmptyView()
+                    }
+                } else if navigationDestination == .peerView {
+                    NavigationLink(destination: StartView(yourName: yourName).environmentObject(game), isActive: .constant(true)) {
+                        EmptyView()
+                    }
+                }
             }
-
+            
             VStack {
                 Spacer()
                 PageIndicator(index: $selectedIndex, maxIndex: gameData.count - 1)
@@ -70,16 +82,22 @@ struct OnboardingView: View {
                     .padding(.bottom, -30)
             }
         }
+        .onAppear {
+            aiGame.resetGame()
+            navigationDestination = nil
+        }
         .alert("Choose Your Role", isPresented: $showingRoleChoiceAlert) {
             Button("Goat") {
                 userRole = .goat
-                playAgainstAI = true // Set to true since the user is playing against AI
-                navigationDestination = .baghChalBoard
+                playAgainstAI = true
+                aiGame.nextTurn = "G"
+                navigationDestination = .gameLobbyView
             }
             Button("Tiger") {
                 userRole = .tiger
-                playAgainstAI = true // Set to true since the user is playing against AI
-                navigationDestination = .baghChalBoard
+                playAgainstAI = true
+                aiGame.nextTurn = "B"
+                navigationDestination = .gameLobbyView
             }
         }
     }

@@ -11,7 +11,7 @@ import Combine
 class BaghChalGame: ObservableObject {
     @Published var baghsTrapped: Int = 0
     @Published var goatsCaptured: Int = 0
-    @Published var nextTurn: String = "G" // or "B"
+    @Published var nextTurn: String = "B" // or "B"
     @Published var goatsPlaced: Int = 0
     @Published var tigerPositions: [CGPoint]
     @Published var goatPositions: [CGPoint]
@@ -27,45 +27,7 @@ class BaghChalGame: ObservableObject {
     let diameter: CGFloat
     
     var engine: Engine
-    
-    @Published var player1 = Player(gamePiece: .tiger, name: "Player 1")
-    @Published var player2 = Player(gamePiece: .goat, name: "Player 2")
-    @Published var isThinking = false
     @Published var isGameOver: Bool = false
-    
-    var currentPlayer: Player {
-        if player1.isCurrent {
-            return player1
-        } else {
-            return player2
-        }
-    }
-    
-    var gameStarted: Bool {
-        player1.isCurrent || player2.isCurrent
-    }
-    
-    var boardDisabled: Bool {
-        isGameOver || !gameStarted || isThinking
-    }
-    
-    var gameType = GameType.undetermined
-    
-    func setupGame(gameType: GameType, player1Name: String, player2Name: String) {
-        switch gameType {
-        case .single:
-            self.gameType = .single
-            player2.name = player2Name
-        case .bot:
-            self.gameType = .bot
-            player2.name = UIDevice.current.name
-        case .peer:
-            self.gameType = .peer
-        case .undetermined:
-            break
-        }
-        player1.name = player1Name
-    }
     
     func resetGame() {
         baghsTrapped = 0
@@ -94,12 +56,7 @@ class BaghChalGame: ObservableObject {
 
         trappedTigers.removeAll()
     }
-    
-    func toggleCurrent() {
-        player1.isCurrent.toggle()
-        player2.isCurrent.toggle()
-    }
-    
+     
     func checkIfWinner() {
         let result = winner()
 
@@ -517,7 +474,6 @@ extension BaghChalGame {
     }
         
     func processReceivedMove(_ move: Move) {
-        // Assuming you have a method to apply the move
         if nextTurn == "G" {
             applyGoatMove(move)
         } else if nextTurn == "B" {

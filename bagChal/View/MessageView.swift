@@ -8,13 +8,11 @@
 import SwiftUI
 
 struct MessageView: View {
-    @StateObject var messagesManager = MessagesManager()
-    
+    @EnvironmentObject var messagesManager: MessagesManager
+
     var body: some View {
         VStack {
-            VStack {
-                TitleRow()
-                
+            VStack {                
                 ScrollViewReader { proxy in
                     ScrollView {
                         ForEach(messagesManager.messages, id: \.id) { message in
