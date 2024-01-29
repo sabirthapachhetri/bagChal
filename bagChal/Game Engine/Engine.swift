@@ -19,48 +19,64 @@ class Engine {
     func staticEvaluation(for game: BaghChalGame) -> Double {
         // Endgame conditions
         if game.isGameOver {
-            switch game.winner() {
-            case "G": return INF // Goats win
-            case "B": return -INF // Tigers win
-            default: break
-            }
+            return evaluateEndgame(for: game)
         }
 
         var score = 0.0
 
-        // Scoring weights
+        // Evaluations
+        score -= evaluateGoatCaptures(for: game)
+        score += evaluateTigerTraps(for: game)
+        score += evaluateTigerMobility(for: game)
+        score += evaluateTigerCapturePotential(for: game)
+        score += evaluateGoatSafetyAndTigerThreat(for: game)
+
+        return score
+    }
+
+    private func evaluateEndgame(for game: BaghChalGame) -> Double {
+        switch game.winner() {
+        case "G": return Double.infinity // Goats win
+        case "B": return -Double.infinity // Tigers win
+        default: return 0
+        }
+    }
+
+    private func evaluateGoatCaptures(for game: BaghChalGame) -> Double {
         let goatWeight = 10.0
+        return goatWeight * Double(game.goatsCaptured)
+    }
+
+    private func evaluateTigerTraps(for game: BaghChalGame) -> Double {
         let tigerWeight = 15.0
+        return tigerWeight * Double(game.baghsTrapped)
+    }
+
+    private func evaluateTigerMobility(for game: BaghChalGame) -> Double {
         let mobilityWeight = 5.0
-        let captureWeight = 200.0
-        let goatSafetyWeight = 5.0
-        let tigerThreatWeight = 10.0
-
-        // Goat captures
-        score -= goatWeight * Double(game.goatsCaptured)
-
-        // Tiger traps
-        score += tigerWeight * Double(game.baghsTrapped)
-
-        // Tiger mobility
         let tigerMobility = game.tigerPositions.map { position -> Int in
             var moves: [Move] = []
             game.addTigerMoves(from: game.convertToGridPoint(position), to: &moves)
             return moves.count
         }.reduce(0, +)
-        score += mobilityWeight * Double(tigerMobility)
+        return mobilityWeight * Double(tigerMobility)
+    }
 
-        // Tiger capture potential
+    private func evaluateTigerCapturePotential(for game: BaghChalGame) -> Double {
+        let captureWeight = 200.0
         let capturePotential = game.tigerPositions.contains { position -> Bool in
             var moves: [Move] = []
             game.addTigerMoves(from: game.convertToGridPoint(position), to: &moves)
             return moves.contains { move in game.canTigerCapture(from: game.convertToCGPoint(move.from), to: game.convertToCGPoint(move.to)) }
         }
-        if capturePotential {
-            score += captureWeight
-        }
+        return capturePotential ? captureWeight : 0
+    }
 
-        // Goat safety and tiger threat
+    private func evaluateGoatSafetyAndTigerThreat(for game: BaghChalGame) -> Double {
+        let goatSafetyWeight = 5.0
+        let tigerThreatWeight = 10.0
+        var score = 0.0
+
         for goatPosition in game.goatPositions {
             let goatGridPoint = game.convertToGridPoint(goatPosition)
             if game.isGoatSafe(at: goatGridPoint) {
@@ -73,6 +89,7 @@ class Engine {
 
         return score
     }
+
 
     // The minimax algorithm with alpha-beta pruning
     func minimax(game: BaghChalGame, depth: Int, alpha: Double, beta: Double, maximizingPlayer: Bool) -> Double {
